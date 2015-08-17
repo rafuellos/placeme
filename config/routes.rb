@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
   root to: 'users#profile'
-  
+  #root to: 'users#profile'
+
   match '/signup',    to: 'users#new',    via: 'get'
 
   resources :users
