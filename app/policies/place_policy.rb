@@ -13,15 +13,13 @@ class PlacePolicy < ApplicationPolicy
       user.id == record.user_id
   end
 
-=begin
-  def permitted_attributes
-    if user.admin? || user.owner_of?(post)
-      [:title, :body, :tag_list]
-    else
-      [:tag_list]
-    end
-  end=end
-
+  # def permitted_attributes
+  #   if user.admin? || user.owner_of?(post)
+  #     [:title, :body, :tag_list]
+  #   else
+  #     [:tag_list]
+  #   end
+  # end
 
   class Scope < Scope
     def resolve
