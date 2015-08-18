@@ -3,6 +3,7 @@ gem 'devise'
 gem 'pundit'
 gem 'materialize-sass'
 
+gem "paperclip", "~> 4.3"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
