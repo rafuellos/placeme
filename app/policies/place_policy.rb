@@ -14,7 +14,11 @@ class PlacePolicy < ApplicationPolicy
   end
 
   def owner_of?
-    user.id == place.owner_id
+    user.id == record.owner_id
+  end
+
+  def destroy?
+    user.id == record.owner_id
   end
 
   # def permitted_attributes

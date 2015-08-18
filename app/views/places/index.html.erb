@@ -29,9 +29,9 @@
         <td><%= place.owner_id %></td>
 
         <td><%= link_to '<i class="fa fa-caret-left fa-2x"></i>'.html_safe, profile_path%><td>
-        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, profile_path%><td>
         <td><%= link_to '<i class="fa fa-pencil fa-2x"></i>'.html_safe, profile_path%><td>
-        <td><%= image_tag place.photo.url %></td>
+        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?' }%><td>
+        <td><%= image_tag place.photo.url(:thumb)%></td>
 
 
       </tr>

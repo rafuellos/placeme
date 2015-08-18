@@ -1,25 +1,25 @@
 class PlacesController < ApplicationController
   
-  # GET ../tasks
+  # GET ../places
   def index
     @places = policy_scope(Place)
     #@places = Place.all
     #binding.pry
   end
 
-  # GET ../tasks/new
+  # GET ../places/new
   def new
     @place = Place.new
     skip_authorization
   end
 
-  # POST ../tasks
+  # POST ../places
   def create
     @place = current_user.owned_places.create(place_params)
     skip_authorization
     respond_to do |format|
       if @place.save
-        format.html { redirect_to profile_path, notice: 'Task was successfully created.' }
+        format.html { redirect_to profile_path, notice: 'Place was successfully created.' }
       else
         format.html { render :new }
       end
@@ -36,6 +36,16 @@ class PlacesController < ApplicationController
       redirect_to @place
     else
       render :edit
+    end
+  end
+
+  # DELETE ../place/:id
+  def destroy
+    @place = Place.find(params[:id])
+    authorize @place
+    @place.destroy
+    respond_to do |format|
+      format.html { redirect_to user_places_url(current_user.id), notice: 'Place was successfully destroyed.' }
     end
   end
 
