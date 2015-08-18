@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
 
   # GET ../places/new
   def new
-    @place = Place.new
+    @place = Place.new(owner_id: current_user.id)
     skip_authorization
   end
 
@@ -58,7 +58,7 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:comments, :owner_id, :photo)
+      params.require(:place).permit(:comments, :photo)
     end
 
 
