@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
-gem 'bootstrap'
+gem 'materialize-sass'
 
 
 
