@@ -2,4 +2,6 @@
 
 <p>
 <strong>Email:</strong> <%= current_user.email %>
+<%= link_to 'Places', user_places_path(current_user.id) %>
+<%= link_to 'Create Place', new_user_place_path(current_user.id) %>
 </p>

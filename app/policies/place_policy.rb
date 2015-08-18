@@ -23,7 +23,7 @@ class PlacePolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.admin?
+      if (user.id == record.user_id)
         scope.all
       else
         scope.where(user_id: @user.id)

@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   match '/signup',    to: 'users#new',    via: 'get'
 
-  resources :users
-  resources :places
+  resources :users do
+    resources :places
+  end
 
 
 
