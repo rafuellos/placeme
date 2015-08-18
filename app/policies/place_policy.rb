@@ -2,15 +2,15 @@
 class PlacePolicy < ApplicationPolicy
 
   def update?
-    user.id == record.user_id
+    user.id == record.owner_id
   end
 
   def create?
-    user.id == record.user_id
+    user.id == record.owner.id
   end
 
   def share?
-    user.id == record.user_id
+    user.id == record.owner.id
   end
 
   def owner_of?
@@ -21,11 +21,11 @@ class PlacePolicy < ApplicationPolicy
     user.id == record.owner_id
   end
 
-  # def permitted_attributes
-  #   if user.owner_of?(place)
-  #     [:comment]
-  #   end
-  # end
+  def permitted_attributes
+    if (user.id == record.owner_id)
+      [:comments, :photo]
+    end
+  end
 
   class Scope < Scope
     def resolve

@@ -27,13 +27,18 @@ class PlacesController < ApplicationController
   end
   
   #Created just for policy authorization purposes to use in the future
+  def edit
+    @place = Place.find(params[:id])
+    authorize @place
+  end
+
   def update
     @place = Place.find(params[:id])
     raise "not authorized" unless PlacePolicy.new(current_user, @place).update?
-    if @place.update(post_params)
-    #if @post.update_attributes(permitted_attributes(@post))
-
-      redirect_to @place
+    authorize @place
+    #if @place.update(post_params)
+    if @place.update_attributes(permitted_attributes(@place))
+      redirect_to user_places_path(current_user.id)
     else
       render :edit
     end
@@ -45,7 +50,7 @@ class PlacesController < ApplicationController
     authorize @place
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to user_places_url(current_user.id), notice: 'Place was successfully destroyed.' }
+      format.html {redirect_to user_places_url(current_user.id), notice: 'Place was successfully destroyed.' }
     end
   end
 
