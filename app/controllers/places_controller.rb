@@ -2,8 +2,9 @@ class PlacesController < ApplicationController
   
   # GET ../tasks
   def index
-    #@places = policy_scope(Place)
-    @places = current_user.owned_places
+    @places = policy_scope(Place)
+    #@places = Place.all
+    #binding.pry
   end
 
   # GET ../tasks/new

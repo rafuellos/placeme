@@ -1,0 +1,36 @@
+<h2><%= current_user.name %>!</h2>
+
+<p>
+<strong>Email:</strong> <%= current_user.email %>
+<%= link_to 'Places', user_places_path(current_user.id) %>
+<%= link_to 'Create Place', new_user_place_path(current_user.id) %>
+</p>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Places</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place id</th>
+      <th>Comment</th>
+      <th>Owner_id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @places.each do |place| %>
+      <tr>
+        <td><%= place.id %></td>
+        <td><%= place.comments %></td>
+        <td><%= place.owner_id %></td>
+        <td><%= link_to 'Back', profile_path %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
