@@ -29,7 +29,7 @@
         <td><%= place.id %></td>
         <td><%= place.comments %></td>
         <td><%= place.owner_id %></td>
-        <td><%= place.created_at.strftime("%-d of %b, %Y") %></td>
+        <td><%= l place.created_at, :format => :short %></td>
 
 
         <td><%= link_to profile_path do%>
