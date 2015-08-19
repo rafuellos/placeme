@@ -1,0 +1,33 @@
+
+<%= form_for([current_user, @place]) do |f| %>
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% @place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_field :comments %>
+  </div>
+ <!--  <div class="field">
+    <%= f.label :owner %><br>
+    <%= f.number_field :owner %>
+  </div> -->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

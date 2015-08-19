@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
 gem 'materialize-sass'
+#gem 'font-awesome-sass'
 
+gem "paperclip", "~> 4.3"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -42,7 +44,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
-  gem 'pry'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

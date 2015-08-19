@@ -2,32 +2,34 @@
 class PlacePolicy < ApplicationPolicy
 
   def update?
-      user.id == record.user_id
+    user.id == record.owner_id
   end
 
   def create?
-      user.id == record.user_id
+    user.id == record.owner.id
   end
 
   def share?
-      user.id == record.user_id
+    user.id == record.owner.id
   end
 
-  # def permitted_attributes
-  #   if user.admin? || user.owner_of?(post)
-  #     [:title, :body, :tag_list]
-  #   else
-  #     [:tag_list]
-  #   end
-  # end
+  def owner_of?
+    user.id == record.owner_id
+  end
+
+  def destroy?
+    user.id == record.owner_id
+  end
+
+  def permitted_attributes
+    if (user.id == record.owner_id)
+      [:comments, :photo]
+    end
+  end
 
   class Scope < Scope
     def resolve
-      if user.admin?
-        scope.all
-      else
-        scope.where(user_id: @user.id)
-      end
+        scope.where(owner_id: @user.id)
     end
   end
 
