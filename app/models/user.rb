@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :owned_places, class_name: 'Place', foreign_key: :owner_id
 
-  def new
-    
-    
+  def self.options_for_select
+      order('LOWER(name)').map { |user| [user.name, user.id] }
   end
 end

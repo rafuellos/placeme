@@ -2,7 +2,22 @@ class PlacesController < ApplicationController
   
   # GET ../places
   def index
-    @places = policy_scope(Place)
+    #@places = policy_scope(Place)
+
+    @filterrific = initialize_filterrific(
+      Place,
+      params[:filterrific],
+      :select_options => {
+        sorted_by: Place.options_for_sorted_by,
+        with_country_id: User.options_for_select
+      }
+    ) or return
+    @places = @filterrific.find.page(params[:page])
+    skip_authorization
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET ../places/new

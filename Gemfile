@@ -9,6 +9,9 @@ gem "paperclip", "~> 4.3"
 gem 'globalize', '~> 5.0.0'
 gem 'rails-i18n', '~> 4.0.0'
 
+gem 'filterrific'
+gem 'will_paginate', '~> 3.0.6'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

@@ -1,0 +1,32 @@
+
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info places %>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Place id</th>
+        <th>Comment</th>
+        <th>Owner_id</th>
+        <th>Date</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td><%= link_to(place.id, user_place_path(current_user.id,place.id)) %></td>
+          <td><%= place.comments %></td>
+          <td><%= place.owner_id %></td>
+          <td><%= l place.created_at, :format => :short %></td>
+          <td><%= image_tag place.photo.url(:thumb)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate places  %>
