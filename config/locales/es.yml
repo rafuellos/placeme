@@ -1,0 +1,21 @@
+en:
+  hello: "Hola Mundo"
+  activerecord:
+    attributes:
+      place:
+        comments: "Comentario"
+  forms:
+    messages:
+      success: "Realizado con exito!"
+    buttons:
+      edit: "Editar"
+      submit: "Enviar"
+  menu:
+    new_article: "Añadir un artículo"
+  articles:
+    index:
+      title: "Lista de articulos"
+    edit:
+      title: "Añadir artículo"
+    new:
+      title: "Nuevo artículo"

@@ -21,3 +21,24 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      place:
+        comments: "Comment"
+  forms:
+    messages:
+      success: "Operation succeeded!"
+    buttons:
+      edit: "Edit"
+      submit: "Submit"
+  menu:
+    new_article: "Add an article"
+  articles:
+    index:
+      title: "List of articles"
+    edit:
+      title: "Add article"
+    new:
+      title: "New article"
+
+
