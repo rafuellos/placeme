@@ -3,8 +3,6 @@ class PlacesController < ApplicationController
   # GET ../places
   def index
     @places = policy_scope(Place)
-    #@places = Place.all
-    #binding.pry
   end
 
   # GET ../places/new

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
 gem 'materialize-sass'
+#gem 'font-awesome-sass'
 
 gem "paperclip", "~> 4.3"
 
