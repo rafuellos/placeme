@@ -13,15 +13,19 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, unless: :devise_controller?
 
   def set_locale
-    if current_user.locale_value && I18n.available_locales.include?(cookies[:placeme_locale].to_sym)
-      language = current_user.locale_value.to_sym
-    else
+    if current_user
+      if current_user.locale_value && I18n.available_locales.include?(cookies[:placeme_locale].to_sym)
+        language = current_user.locale_value.to_sym
+      else
+        language = I18n.default_locale
+        current_user.locale_value = language
+      end
+    else  
       language = I18n.default_locale
-      current_user.locale = language
     end
     I18n.locale = language
   end
-  
+
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected

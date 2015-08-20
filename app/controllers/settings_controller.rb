@@ -7,7 +7,6 @@ class SettingsController < ApplicationController
     current_user.locale_value = language
     current_user.save
     I18n.locale = language
-    binding.pry
     redirect_to request.referer || root_url
   end
 

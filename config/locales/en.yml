@@ -4,4 +4,6 @@ en:
       date_place: "%d/%b/%Y es otro"
   places:
     index:
-      prueba: "Commets test"
+      comments: "Comment"
+      owner_id: "Owner Id"
+      date: "Date"
