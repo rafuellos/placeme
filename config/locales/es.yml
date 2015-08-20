@@ -1,4 +1,9 @@
 es:
-  date:
+  time:
     formats:
-      short: "%m/%d/%Y"
+      date_place: "%d de %b de %Y"
+  places:
+    index:
+      comments: "Comentario"
+      owner_id: "Id del propietario"
+      date: "Fecha"

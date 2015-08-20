@@ -10,20 +10,26 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
   #after_action :verify_policy_scoped, :only => :index, unless: :devise_controller?
 
-  before_action :set_locale
+  before_action :set_locale, unless: :devise_controller?
 
   def set_locale
-    if cookies[:placeme_locale] && I18n.available_locales.include?(cookies[:placeme_locale].to_sym)
-      l = cookies[:placeme_locale].to_sym
-    else
-      l = I18n.default_locale
-      cookies.permanent[:placeme_locale] = l
+    if current_user
+      if current_user.locale_value && I18n.available_locales.include?(cookies[:placeme_locale].to_sym)
+        language = current_user.locale_value.to_sym
+      else
+        language = I18n.default_locale
+        current_user.locale_value = language
+      end
+    else  
+      language = I18n.default_locale
     end
-    I18n.locale = l
+    I18n.locale = language
   end
+
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) << :name
+      devise_parameter_sanitizer.for(:sign_up) << :name << :locale_value
     end
 end

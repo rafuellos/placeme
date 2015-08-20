@@ -1,5 +1,9 @@
----
 en:
-  date:
+  time:
     formats:
-      short: "%m/%d/%Y"
+      date_place: "%d/%b/%Y es otro"
+  places:
+    index:
+      comments: "Comment"
+      owner_id: "Owner Id"
+      date: "Date"
