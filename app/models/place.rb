@@ -1,6 +1,10 @@
 class Place < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id
   validates :owner,  presence: true
+  validates :comments, presence: true
+
+  #Include when geolocation is available
+  #validates :location, presence: true
 
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
@@ -13,7 +17,7 @@ class Place < ActiveRecord::Base
       :search_query,
       :sorted_by,
       :with_owner_id,
-      :with_created_at_gte
+      :with_created_at
     ]
   )
   scope :search_query, lambda { |query|
@@ -74,4 +78,9 @@ class Place < ActiveRecord::Base
   def decorated_created_at
     created_at.to_date.to_s(:long)
   end
+
+  def self.get_year(year)
+      where("strftime('%Y', created_at) = ?", year)
+   end
+
 end

@@ -12,30 +12,7 @@
 <h1>Listing Places</h1>
 <%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
 <%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
-<table>
 
-  <tbody>
-  <% @places.each do |place| %>
-      <tr>
-
-
-        <td><%= link_to edit_user_place_path(current_user.id, place.id) do%>
-            <i class="fa fa-pencil fa-2x"></i>
-          <% end %>
-        <td>
-        <td><%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?' } do%>
-            <i class="fa fa-trash-o fa-2x"></i>
-          <% end %>
-        <td>
-
-
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<h1>Places filter</h1>
 
 <%= form_for_filterrific @filterrific do |f| %>
   <div>
@@ -47,10 +24,11 @@
     ) %>
   </div>
 
-  <div>
+  <div class="input-field col-6">
     Registered after
-    <%= f.date_field(:with_created_at, class: 'datepicker') %>
-
+  
+    <%= f.date_field(:with_created_at, :class => 'datepicker') %>
+    
   </div>
 
   <div>
