@@ -16,7 +16,7 @@
   <thead>
     <tr>
       <th>Place id</th>
-      <th>Comment</th>
+      <th><%= t '.prueba' %></th>
       <th>Owner_id</th>
       <th>Date</th>
       <th colspan="3"></th>
@@ -29,7 +29,7 @@
         <td><%= place.id %></td>
         <td><%= place.comments %></td>
         <td><%= place.owner_id %></td>
-        <td><%= l place.created_at, :format => :short %></td>
+        <td><%= l place.created_at, :format => :date_place %></td>
 
 
         <td><%= link_to profile_path do%>

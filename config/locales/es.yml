@@ -1,4 +1,7 @@
 es:
-  date:
+  time:
     formats:
-      short: "%m/%d/%Y"
+      date_place: "%d de %b de %Y"
+  places:
+    index:
+      prueba: "Comentario de prueba"

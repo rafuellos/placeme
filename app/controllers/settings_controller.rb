@@ -2,9 +2,12 @@ class SettingsController < ApplicationController
 
   def change_locale
     skip_authorization
-    l = params[:locale].to_s.strip.to_sym
-    l = I18n.default_locale unless I18n.available_locales.include?(l)
-    cookies.permanent[:placeme_locale] = l
+    language = params[:locale].to_s.strip.to_sym
+    language = I18n.default_locale unless I18n.available_locales.include?(language)
+    current_user.locale_value = language
+    current_user.save
+    I18n.locale = language
+    binding.pry
     redirect_to request.referer || root_url
   end
 

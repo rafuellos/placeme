@@ -8,4 +8,6 @@ class UsersController < ApplicationController
       render 'users/profile'
     end
 
+    
+
 end
