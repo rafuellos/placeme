@@ -1,18 +1,4 @@
 class PlacesController < ApplicationController
-  
-  # def index
-  #   #@places = policy_scope(Place)
-  #   @places = initialize_filterrific(
-  #       Place,
-  #       params[:filterrific]
-  #     ) or return
-  #     @places = @places.find.page(params[:page])
-  #     skip_authorization
-  #     respond_to do |format|
-  #       format.html
-  #       format.js
-  #     end
-  # end
 
   def index
     @filterrific = initialize_filterrific(
@@ -42,7 +28,7 @@ class PlacesController < ApplicationController
     skip_authorization
     respond_to do |format|
       if @place.save
-        format.html { redirect_to profile_path, notice: 'Place was successfully created.' }
+        format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully created.' }
       else
         format.html { render :new }
       end

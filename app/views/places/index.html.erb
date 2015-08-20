@@ -6,14 +6,11 @@
 <%= link_to 'Create Place', new_user_place_path(current_user.id) %>
 </p>
 
-
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Places</h1>
 <%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
 <%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
-
-<h1>Places</h1>
 
 
 <%= form_for_filterrific @filterrific, remote: true do |f| %>

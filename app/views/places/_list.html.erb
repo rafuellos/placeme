@@ -3,32 +3,27 @@
 
   <div>
     <%= page_entries_info places %>
+
+  <div class="polaroid">
+     <% @places.each do |place| %>
+      <div class='place'>
+        <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
+        <content class="place-contents">
+          <%= content_tag(:div, place.comments, class: 'place-comments') %> 
+          <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
+          
+          <div class="actions">
+            <i class="place_button fa fa-share-alt fa-lg "></i>
+            <i class="place_button fa fa-pencil fa-lg"></i>
+            <i class="place_button fa fa-trash-o fa-lg"></i>
+          </div>
+        </content> 
+      </div>
+    <% end %>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Place id</th>
-        <th><%= t '.comments' %></th>
-        <th><%= t '.owner_id' %></th>
-        <th><%= t '.date' %></th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @places.each do |place| %>
-        <tr>
-          <td><%= link_to(place.id, user_place_path(current_user.id,place.id)) %></td>
-          <td><%= place.comments %></td>
-          <td><%= place.owner_id %></td>
-          <td><%= l place.created_at, :format => :short %></td>
-          <td><%= image_tag place.photo.url(:thumb)%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+
+
 
 <%= will_paginate places  %>
 
->
