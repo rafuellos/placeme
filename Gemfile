@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
-#gem 'materialize-sass'
+gem 'rails-assets-bootstrap'
 #gem 'font-awesome-sass'
 
 

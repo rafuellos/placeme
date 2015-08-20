@@ -2,12 +2,10 @@
   display: block;
  }
 
-
-
  .polaroid{
    width:100%;
-   overflow:hidden;
    padding:20px 10px;
+
  }
 
 
@@ -97,17 +95,40 @@
   font-size: 0.8em;
 }
 
-.actions{
-  color: #C55900;
-  margin-top: -15px;
+.action {
   float: right;
 }
 
 .place_button {
- margin-left: 7px; 
+  margin-left: 7px; 
+  color: #C55900;
+  margin-top: -15px;
+
 }
 
 .places-images {
   width: 200px;
   height: 200px;
+}
+
+.search-bar, .search-field  {
+  display: inline-block;
+}
+
+.color {
+  color: #009999;
+}
+
+.border-out {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.border-down {
+  border-bottom: 2px solid #009999;
+  border-style: none none solid none;
+  outline: 0 none;
 }

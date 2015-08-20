@@ -6,7 +6,7 @@ class Place < ActiveRecord::Base
   #Include when geolocation is available
   #validates :location, presence: true
 
-  has_attached_file :photo, :styles => {:medium => "400x400>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
+  has_attached_file :photo, :styles => {:medium => "500x500>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },

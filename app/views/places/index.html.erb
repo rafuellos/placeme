@@ -1,57 +1,79 @@
 <h2><%= current_user.name %>!</h2>
 
 <p>
-<strong>Email:</strong> <%= current_user.email %>
 <%= link_to 'Places', user_places_path(current_user.id) %>
 <%= link_to 'Create Place', new_user_place_path(current_user.id) %>
 </p>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Places</h1>
 <%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
 <%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
 
 
 <%= form_for_filterrific @filterrific, remote: true do |f| %>
-  <div>
-    Search
+  
+  <div class="search_bar">
 
-    <%= f.text_field(
-      :search_query,
-    ) %>
-  </div>
-  <div>
-    Owner Id
-    <%= f.select(
-      :with_owner_id,
-      @filterrific.select_options[:with_owner_id],
-      { include_blank: '- Any -' }
-    ) %>
-  </div>
+    <div class="search-field">
 
-  <div>
-    Year of creation
-    <%= f.text_field(
-      :with_year
-    ) %>
-  </div>
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x color"></i>
+        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+      </span>
 
-  <div>
-    Registered at
-    <%= f.date_field(:with_created_at, class: 'js-datepicker') %>
+      <%= f.text_field(
+        :search_query, class: 'color border-down'
+      ) %>
+    </div>
+    <div class="search-field">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x color"></i>
+        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+      </span>
+      <%= f.select(
+        :with_owner_id,
+        @filterrific.select_options[:with_owner_id],
+        { include_blank: '- Any -' }
+      ) %>
+    </div>
+
+    <div class="search-field">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x color"></i>
+        <i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
+      </span>
+      <%= f.text_field(
+        :with_year, class: 'color border-down'
+      ) %>
+    </div>
+
+    <div class="search-field">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x color"></i>
+        <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+      </span>
+      <%= f.date_field(:with_created_at, class: 'js-datepicker') %>
+    </div>
+
+    <div class="search-field">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x color"></i>
+        <i class="fa fa-filter fa-stack-1x fa-inverse"></i>
+      </span>
+      <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+    </div>
+
+    <div class="search-field">
+      <%= link_to(
+        'Reset filters',
+        reset_filterrific_url,
+      ) %>
+    </div>
+
+    <%= f.submit 'Filter' %>
+
   </div>
-  <div>
-    Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <%= f.submit 'Filter' %>
 
   <%= render_filterrific_spinner %>
 <% end %>
