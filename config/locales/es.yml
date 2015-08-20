@@ -1,9 +1,10 @@
 es:
   time:
     formats:
-      date_place: "%d de %b de %Y"
+      date_place: "%d de %B, %Y"
   places:
     index:
+      id: "Identificador del place"
       comments: "Comentario"
       owner_id: "Id del propietario"
       date: "Fecha"

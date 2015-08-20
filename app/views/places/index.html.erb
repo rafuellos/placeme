@@ -13,52 +13,11 @@
 <%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
 <%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
 
-
-
-<%= form_for_filterrific @filterrific, :remote => true do |f| %>
-  <div>
-    Search
-
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-
-  <div class="input-field col-6">
-    Place created:
-  
-    <%= f.date_field(:with_created_at, :class => 'datepicker', :id => 'datepicker_sort_places') %>
-    
-  </div>
-
-  <div>
-    Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], :id => 'select_sort_places') %>
-  </div>
-
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <div>
-    <%= f.submit 'Search'%>
-  </div>
-
-  <%= render_filterrific_spinner %>
-<% end %>
-
-<%= render(
-  partial: 'places/list',
-  locals: { places: @places }
-) %>
-
 <table>
   <thead>
     <tr>
-      <th>Place id</th>
+      
+      <th><%= t '.id' %></th>
       <th><%= t '.comments' %></th>
       <th><%= t '.owner_id' %></th>
       <th><%= t '.date' %></th>
@@ -97,4 +56,54 @@
     <% end %>
   </tbody>
 </table>
+
+
+<h1>Places</h1>
+
+
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    Search
+
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+  <div>
+    Owner Id
+    <%= f.select(
+      :with_owner_id,
+      @filterrific.select_options[:with_owner_id],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    Registered after
+    <%= f.date_field(:with_created_at, class: 'js-datepicker') %>
+  </div>
+  <div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%= f.submit 'Filter' %>
+
+  <%= render_filterrific_spinner %>
+<% end %>
+  
+
+<%= render(
+  partial: 'places/list',
+  locals: { places: @places }
+) %>
+
+
+
+
 

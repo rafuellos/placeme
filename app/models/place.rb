@@ -9,73 +9,62 @@ class Place < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
+  filterrific :default_filter_params => { :sorted_by => 'created_at_desc' },
+              :available_filters => %w[
+                sorted_by
+                search_query
+                with_owner_id
+                with_created_at
+              ]
+
+  # default for will_paginate
   self.per_page = 5
 
-  filterrific(
-    default_filter_params: { sorted_by: 'created_at_desc' },
-    available_filters: [
-      :search_query,
-      :sorted_by,
-      :with_owner_id,
-      :with_created_at
-    ]
-  )
   scope :search_query, lambda { |query|
-      return nil  if query.blank?
-      # condition query, parse into individual keywords
-      terms = query.downcase.split(/\s+/)
-      # replace "*" with "%" for wildcard searches,
-      # append '%', remove duplicate '%'s
-      terms = terms.map { |e|
-        (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-      }
-      # configure number of OR conditions for provision
-      # of interpolation arguments. Adjust this if you
-      # change the number of OR conditions.
-      num_or_conditions = 1
-      where(
-        terms.map {
-          or_clauses = [
-            "LOWER(places.comments) LIKE ?",
-          ].join(' OR ')
-          "(#{ or_clauses })"
-        }.join(' AND '),
-        *terms.map { |e| [e] * num_or_conditions }.flatten
-      )
+    return nil  if query.blank?
+    # condition query, parse into individual keywords
+    terms = query.downcase.split(/\s+/)
+    # replace "*" with "%" for wildcard searches,
+    # append '%', remove duplicate '%'s
+    terms = terms.map { |e|
+      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
     }
-
-  scope :with_owner_id, lambda { |owner_ids|
-    where(:owner_id => [*owner_ids])
-  }
-
-  scope :with_created_at_gte, lambda { |ref_date|
-    where('places.created_at >= ?', ref_date)
+    # configure number of OR conditions for provision
+    # of interpolation arguments. Adjust this if you
+    # change the number of OR conditions.
+    num_or_conditions = 1
+    where(
+      terms.map {
+        or_clauses = [
+          "LOWER(places.comments) LIKE ?"
+        ].join(' OR ')
+        "(#{ or_clauses })"
+      }.join(' AND '),
+      *terms.map { |e| [e] * num_or_conditions }.flatten
+    )
   }
 
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
     case sort_option.to_s
-    when /^created_at/
+    when /^created_at_/
       order("places.created_at #{ direction }")
-    when /^id/
-      order("places.id #{ direction }")
-    when /^owner_id/
-      order("places.owner_id #{ direction }")
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
   }
-
+  scope :with_owner_id, lambda { |owner_id|
+    where(:owner_id => [*owner_id])
+  }
+  scope :with_created_at, lambda { |ref_date|
+    where('places.created_at >= ?', ref_date)
+  }
 
   def self.options_for_sorted_by
     [
-      ['Owner Id', 'owner_id_asc'],
-      ['Owner Id', 'owner_id_desc'],
-      ['Id up', 'id_asc'],
-      ['Id down', 'id_desc'],
       ['Registration date (newest first)', 'created_at_desc'],
-      ['Registration date (oldest first)', 'created_at_asc']
+      ['Registration date (oldest first)', 'created_at_asc'],
     ]
   end
 
@@ -83,8 +72,5 @@ class Place < ActiveRecord::Base
     created_at.to_date.to_s(:long)
   end
 
-  def self.get_year(year)
-      where("strftime('%Y', created_at) = ?", year)
-   end
 
 end
