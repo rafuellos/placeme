@@ -9,7 +9,7 @@ class Place < ActiveRecord::Base
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => ":style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
-  self.per_page = 10
+  self.per_page = 5
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },
@@ -56,8 +56,12 @@ class Place < ActiveRecord::Base
     # extract the sort direction from the param value.
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
     case sort_option.to_s
-    when /^created_at_/
+    when /^created_at/
       order("places.created_at #{ direction }")
+    when /^id/
+      order("places.id #{ direction }")
+    when /^owner_id/
+      order("places.owner_id #{ direction }")
     else
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
     end
