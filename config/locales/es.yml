@@ -8,3 +8,8 @@ es:
       comments: "Comentario"
       owner_id: "Id del propietario"
       date: "Fecha"
+    list:
+      id: "Identificador del place"
+      comments: "Comentario"
+      owner_id: "Id del propietario"
+      date: "Fecha"

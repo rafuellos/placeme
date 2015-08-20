@@ -14,6 +14,7 @@ class Place < ActiveRecord::Base
                 sorted_by
                 search_query
                 with_owner_id
+                with_year
                 with_created_at
               ]
 
@@ -57,8 +58,15 @@ class Place < ActiveRecord::Base
   scope :with_owner_id, lambda { |owner_id|
     where(:owner_id => [*owner_id])
   }
+
+  scope :with_year, lambda { |year|
+    #year = DateTime.parse(year)
+    where("YEAR(created_at) = ?", year)
+  }
+
   scope :with_created_at, lambda { |ref_date|
-    where('places.created_at >= ?', ref_date)
+    date = DateTime.parse(ref_date)
+    where(:created_at => date.beginning_of_day..date.end_of_day)
   }
 
   def self.options_for_sorted_by

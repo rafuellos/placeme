@@ -8,3 +8,8 @@ en:
       comments: "Comment"
       owner_id: "Owner Id"
       date: "Date"
+    list:
+      id: "Place Id"
+      comments: "Comment"
+      owner_id: "Owner Id"
+      date: "Date"
