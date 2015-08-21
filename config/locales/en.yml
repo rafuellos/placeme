@@ -1,9 +1,15 @@
 en:
   time:
     formats:
-      date_place: "%d/%b/%Y es otro"
+      date_place: "%d of %B, %Y"
   places:
     index:
+      id: "Place Id"
+      comments: "Comment"
+      owner_id: "Owner Id"
+      date: "Date"
+    list:
+      id: "Place Id"
       comments: "Comment"
       owner_id: "Owner Id"
       date: "Date"

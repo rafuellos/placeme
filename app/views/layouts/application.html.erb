@@ -6,22 +6,33 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
+  
 </head>
 <body>
-
-<div id="top_bar">
-  <% if user_signed_in? %>
-    <p><%= link_to 'Sign out', destroy_user_session_path, method: 'DELETE' %></p>
-  <% else %>
-    <p>
-      <%= link_to 'Sign_up', new_user_registration_path %> | 
-      <%= link_to 'Sign_in', new_user_session_path %>
-    </p>
-  <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div id="top_bar" class='col-xs-4 col-xs-offset-7 text-right'>
+      <% if user_signed_in? %>
+        <p>
+          <%= link_to destroy_user_session_path, method: 'DELETE', class: 'btn btn-danger' do%>
+            <i class="fa fa-sign-out fa-lg ">Sign out</i>
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to 'Sign_up', new_user_registration_path %> | 
+          <%= link_to 'Sign_in', new_user_session_path %>
+        </p>
+      <% end %>
+    </div> 
+  </div>
+  
 </div>
 
-
-<%= yield %>
+<div class="container-fluid">
+    <%= yield %>
+</div>
 
 </body>
 </html>
