@@ -21,6 +21,9 @@ class PlacesController < ApplicationController
   def new
     @place = Place.new(owner_id: current_user.id)
     skip_authorization
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create

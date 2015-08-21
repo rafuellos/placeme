@@ -10,6 +10,13 @@
   
 </head>
 <body>
+  
+</div>
+
+<div class="container-fluid">
+    <%= yield %>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div id="top_bar" class='col-xs-4 col-xs-offset-7 text-right'>
@@ -27,12 +34,5 @@
       <% end %>
     </div> 
   </div>
-  
-</div>
-
-<div class="container-fluid">
-    <%= yield %>
-</div>
-
 </body>
 </html>
