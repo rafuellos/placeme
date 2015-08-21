@@ -1,88 +1,129 @@
-<h2><%= current_user.name %>!</h2>
 
-<p>
-<%= link_to 'Places', user_places_path(current_user.id) %>
-<%= link_to 'Create Place', new_user_place_path(current_user.id) %>
-</p>
+<div class="col-xs-2">
+    <div class="container-fluid menu-for-user">
+      <h2><%= current_user.name %>!</h2>
 
-<p id="notice"><%= notice %></p>
+      <div>
+        <%= link_to user_places_path(current_user.id), class: 'action-style' do%>
+          <span class="fa-stack fa-3x", data-toggle="tooltip" data-placement="right" title="Search places">
+            <i class="fa fa-circle fa-stack-2x color"></i>
+            <i class="fa fa-globe fa-stack-1x fa-reverse"></i>
+        <% end %>             
+      </div>
+      <div>
+        <%= link_to new_user_place_path(current_user.id), class: 'action-style' do%>
+          <span class="fa-stack fa-3x", data-toggle="tooltip" data-placement="right" title="Add a place">
+            <i class="fa fa-circle fa-stack-2x color"></i>
+            <i class="fa fa-plus fa-stack-1x fa-reverse"></i>
+        <% end %>   
+      </div>
+      <div>
+        <%= link_to destroy_user_session_path, method: 'DELETE', class: 'btn btn-danger' do%>
+          <i class="fa fa-sign-out fa-lg ">Sign out</i>
+        <% end %>
+      </div>
 
-<%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
-<%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
+
+          
+
+          <div class="btn-group closed">
+            <a class="btn btn-primary" href="#"><i class="fa fa-settings fa-fw"></i> Settings</a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="fa fa-caret-down"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
+              <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+              <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+              <li class="divider"></li>
+              <li><a href="#"><i class="i"></i> Make admin</a></li>
+            </ul>
+          </div>
+      
+      <p id="notice"><%= notice %></p>
+
+      <%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %>
+      <%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %>
+      
+    </div>
+</div>
 
 
-<%= form_for_filterrific @filterrific, remote: true do |f| %>
-  
-  <div class="search_bar">
 
-    <div class="search-field">
 
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x color"></i>
-        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
-      </span>
+<div class="col-xs-10">
+  <div class="container-fluid clearfix">
+    <%= form_for_filterrific @filterrific, remote: true do |f| %>
+      
+      <div class="search_bar text-center">
 
-      <%= f.text_field(
-        :search_query, class: 'color border-down'
+        <div>
+          <div class="search-field">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-square fa-stack-2x color"></i>
+              <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+            </span>
+
+            <%= f.text_field(
+              :search_query, class: 'color border-down'
+            ) %>
+          </div>
+          <div class="search-field">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-square fa-stack-2x color"></i>
+              <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+            </span>
+            <%= f.select(
+              :with_owner_id,
+              @filterrific.select_options[:with_owner_id],
+              { include_blank: '- Any -' }
+            ) %>
+          </div>
+
+          <div class="search-field">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-square fa-stack-2x color"></i>
+              <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+            </span>
+            <%= f.date_field(:with_created_at, class: 'js-datepicker') %>
+          </div>
+
+          <div class="search-field">
+            <span class="fa-stack fa-lg">
+              <i class="fa fa-square fa-stack-2x color"></i>
+              <i class="fa fa-filter fa-stack-1x fa-inverse"></i>
+            </span>
+            <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+          </div>
+        </div>
+        <div>
+          <div class="search-field">
+            <%= link_to(
+              'Reset filters',
+              reset_filterrific_url,
+            ) %>
+          </div>
+
+          <%= f.submit 'Filter' %>
+        </div>
+
+      </div>
+
+      <%= render_filterrific_spinner %>
+    <% end %>
+      
+    <div class="col-sx-12">
+      <%= render(
+        partial: 'places/list',
+        locals: { places: @places }
       ) %>
+      
     </div>
-    <div class="search-field">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x color"></i>
-        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
-      </span>
-      <%= f.select(
-        :with_owner_id,
-        @filterrific.select_options[:with_owner_id],
-        { include_blank: '- Any -' }
-      ) %>
-    </div>
-
-    <div class="search-field">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x color"></i>
-        <i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
-      </span>
-      <%= f.text_field(
-        :with_year, class: 'color border-down'
-      ) %>
-    </div>
-
-    <div class="search-field">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x color"></i>
-        <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
-      </span>
-      <%= f.date_field(:with_created_at, class: 'js-datepicker') %>
-    </div>
-
-    <div class="search-field">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x color"></i>
-        <i class="fa fa-filter fa-stack-1x fa-inverse"></i>
-      </span>
-      <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-    </div>
-
-    <div class="search-field">
-      <%= link_to(
-        'Reset filters',
-        reset_filterrific_url,
-      ) %>
-    </div>
-
-    <%= f.submit 'Filter' %>
 
   </div>
+</div>
 
-  <%= render_filterrific_spinner %>
-<% end %>
-  
 
-<%= render(
-  partial: 'places/list',
-  locals: { places: @places }
-) %>
+
 
 
 

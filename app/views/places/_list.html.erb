@@ -4,30 +4,32 @@
   <div>
     <%= page_entries_info places %>
 
-  <div class="polaroid">
-     <% @places.each do |place| %>
-      <div class='place'>
-        <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
-        <content class="place-contents">
-          <%= content_tag(:div, place.comments, class: 'place-comments') %> 
-          <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
-          
-          <div class='action'>
-            <%= link_to profile_path do%>
-              <i class="fa fa-share-alt fa-lg place_button"></i>
-            <% end %>
-            <%= link_to edit_user_place_path(current_user.id, place.id) do%>
-              <i class="fa fa-pencil fa-lg place_button"></i>
-            <% end %>
-            <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'} do%>
-              <i class="fa fa-trash-o fa-lg place_button"></i>
-            <% end %>
-          </div>
-        </content> 
-      </div>
-    <% end %>
+    <div class="polaroid">
+       <% @places.each do |place| %>
+        <div class='place'>
+          <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
+          <content class="place-contents">
+            <%= content_tag(:div, place.comments, class: 'place-comments') %> 
+            <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
+            
+            <div class='action'>
+              <%= link_to profile_path do%>
+                <i class="fa fa-share-alt fa-lg place_button"></i>
+              <% end %>
+              <%= link_to edit_user_place_path(current_user.id, place.id) do%>
+                <i class="fa fa-pencil fa-lg place_button"></i>
+              <% end %>
+              <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'} do%>
+                <i class="fa fa-trash-o fa-lg place_button"></i>
+              <% end %>
+            </div>
+          </content> 
+        </div>
+      <% end %>
+    </div>
+
+
+    <%= will_paginate places  %>
+  
   </div>
-
-
-<%= will_paginate places  %>
-
+</div>

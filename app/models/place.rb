@@ -19,7 +19,7 @@ class Place < ActiveRecord::Base
               ]
 
   # default for will_paginate
-  self.per_page = 8
+  self.per_page = 6
 
   scope :search_query, lambda { |query|
     return nil  if query.blank?
