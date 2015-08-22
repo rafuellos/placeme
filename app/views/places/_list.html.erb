@@ -3,9 +3,9 @@
   
   <div>
     
-    <div class="col-xs-4 col-xs-offset-4 text-search color-secondary page-text"><%= will_paginate places %></div> 
+    <div class="col-xs-12 page-text"><%= will_paginate places, class: 'apple_pagination' %></div> 
 
-    <div class="gallery col-xs-10 col-xs-offset-1 text-center">
+    <div class="gallery col-xs-12 text-center">
        <% @places.each do |place| %>
         <div class='place'>
           <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
@@ -14,14 +14,14 @@
             <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
             
             <div class='action'>
-              <%= link_to profile_path do%>
-                <i class="fa fa-share-alt fa-lg place_button color-secondary"></i>
+              <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
               <% end %>
-              <%= link_to edit_user_place_path(current_user.id, place.id) do%>
-                <i class="fa fa-pencil fa-lg place_button color-secondary"></i>
+              <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Edit"}  do%>
+                <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
               <% end %>
-              <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'} do%>
-                <i class="fa fa-trash-o fa-lg place_button color-secondary"></i>
+              <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' , data: {toggle: "tooltip", placement: "right", title:"Delete"} do%>
+                <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
               <% end %>
             </div>
           </content> 

@@ -12,13 +12,16 @@
     </div>
   <% end %>
 
+  
+
   <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo, id: 'pictureInput' %>
+    <%= f.label :photo, 'Add a new photo', class: 'color' %><br>
+    <div id="target" class="photo-frame"></div>
+    <%= f.file_field :photo, :id => 'pictureInput' %>
   </div>
 
-  <div id="target">
-  </div>
+
+
   <div class="field">
 
     <%= f.label :comments %><br>
