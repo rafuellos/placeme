@@ -86,14 +86,16 @@ display: block;
 
 .place-comments, .place-date {
   font-family: 'Reenie Beanie', cursive;
-  color: #009999;
+  color: #076969;
   text-align: left;
   letter-spacing:0.09em;
   font-size: 16px;
+  -webkit-backface-visibility: hidden;
 }
 .place-date {
   font-style: oblique;
   font-size: 0.9em;
+
 }
 
 .welcome {
@@ -160,7 +162,8 @@ div.container-fluid {
 }
 
 .container-fluid.menu-for-user.text-center {
-  padding-left: 0;
+  padding-left: 5px;
+  margin-left: 5px;
 
 }
 
@@ -208,6 +211,7 @@ div.col-xs-12.page-text {
   height:50vh;
   border-radius: 3px;
   margin-top: 25vh;
+  padding-left: 1opx;
 }
 
 input[type=text],
@@ -263,6 +267,7 @@ body.loading .modal {
   font-size: 14px;
   background: #009999;
   border: 1px solid #FFF;
+  border-radius: 4px;
   text-align: center;
   margin-top: 12px;
   cursor: default; 
@@ -294,3 +299,9 @@ body.loading .modal {
       text-decoration: underline; 
       color: white;
     }
+
+.open>.dropdown-menu {
+  margin-left: -60px;
+  min-width: 140px;
+}
+

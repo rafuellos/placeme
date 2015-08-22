@@ -1,6 +1,6 @@
 
 <div class="col-xs-2">
-    <div class="container-fluid menu-for-user text-center white">
+    <div class="container-fluid menu-for-user text-center">
       <div class='welcome'><%= t '.welcome' %> <%= current_user.name %>!</div>
 
       <div>
@@ -22,14 +22,13 @@
       <div>
       </div>
         <div class="btn-group closed white">
-          <a class="btn btn-default color" href="#"><i class="fa fa-cog fa-fw color "></i> Settings</a>
+          
           <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-            <span class="fa fa-caret-down color"></span></a>
+            <span class="fa fa-angle-double-down color"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
-            <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+            <li><a href="#"><i class="fa fa-pencil fa-fw color"></i> Edit your account</a></li>
             <li><%= link_to destroy_user_session_path, method: 'DELETE' do%>
-              <i class="fa fa-sign-out fa-fw "></i> Sign out
+              <i class="fa fa-sign-out fa-fw color-secondary  "></i> Sign out
             <% end %></li>
             <li class="divider"></li>
             <li><%= link_to "Spanish", :controller => 'settings', :action => 'change_locale', :locale => 'es' %></li>
