@@ -146,6 +146,11 @@ display: block;
   -webkit-backface-visibility: hidden;
 }
 
+.logo-style {
+  width: 200px;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+}
 .places-images-modal {
   border-radius: 2px;
 }
@@ -217,9 +222,8 @@ div.col-xs-12.page-text {
 
 .menu-for-user {
   background-color: #009999;
-  height:50%;
+  min-height: 600px;
   border-radius: 3px;
-  margin-top: 10vh;
   padding-left: 10px;
 }
 
