@@ -18,7 +18,8 @@
                 <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
                   <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
                 <% end %>
-                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Edit"}  do%>
+
+                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-add"} do%>
                   <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
                 <% end %>
                 <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' do%>

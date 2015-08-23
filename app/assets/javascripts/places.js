@@ -15,10 +15,10 @@ $( document ).ready(function() {
 
   function getLocation() {
     console.log('Getting location...'); 
-    navigator.geolocation.getCurrentPosition(onLocation, onError, options);
+    navigator.geolocation.getCurrentPosition(setUserLocation, onError, options);
   }
 
-  function onLocation (position) {
+  function setUserLocation (position) {
     console.log("Got it!");
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
@@ -38,6 +38,20 @@ $( document ).ready(function() {
   function onError(error) {
     console.log("Getting location failed: " + error);
   }
+
+  $('#modal-add').on('click', '#set_location', function(event){
+    navigator.geolocation.getCurrentPosition(placeLocation, onError, options);
+  });
+
+  function placeLocation (position) {
+    console.log("Got it!");
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    $('#longitude_place').val(lon);
+    $('#latitude_place').val(lat);
+
+  }
+
 
 
   $(function(){

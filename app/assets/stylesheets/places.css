@@ -134,10 +134,16 @@ display: block;
   -webkit-backface-visibility: hidden;
 }
 
-.photo-frame {
+.photo-frame,
+.map-frame {
   border-radius: 2px;
   border: 1px solid #F6A25C;
   margin-bottom: 10px;
+}
+
+.map-frame {
+  width: 325px;
+  height: 325px;
 }
 
 .show-photo {
@@ -222,7 +228,7 @@ div.col-xs-12.page-text {
 
 .menu-for-user {
   background-color: #009999;
-  min-height: 600px;
+  min-height: 480px;
   border-radius: 3px;
   padding-left: 10px;
 }
@@ -314,7 +320,7 @@ body.loading .modal {
     }
 
 .open>.dropdown-menu {
-  margin-left: -60px;
+  margin-left: -55px;
   min-width: 140px;
 }
 

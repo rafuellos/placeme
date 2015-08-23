@@ -20,7 +20,7 @@
         <%= f.file_field :photo, :id => 'pictureInput' %>
       </div>
 
-      <div class="col col-xs-4 field">
+      <div class="col col-xs-3 field">
         <%= f.label :title %><br>
         <%= f.text_field :title %><br>
 
@@ -28,11 +28,16 @@
         <%= f.text_field :comments %><br>
 
         <%= f.label :longitude %><br>
-        <%= f.text_field :longitude %><br>
+        <%= f.text_field :longitude, id: 'longitude_place' %><br>
 
         <%= f.label :latitude %><br>
-        <%= f.text_field :latitude %><br>
+        <%= f.text_field :latitude, id: 'latitude_place' %><br>
       </div>  
+      <div class="col col-xs-5 field text-center">
+        <%= f.label :map, 'Pick the location', class: 'color' %><br>
+        <div id="map_for_location" class="map-frame"></div>
+        <%= button_tag 'Current location', type: 'button', class: "btn btn-default create-place", :id => "set_location" %>
+      </div> 
     </div>
     <div class="col col-xs-12 text-center">
       
