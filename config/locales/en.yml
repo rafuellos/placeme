@@ -4,6 +4,7 @@ en:
       date_place: "%d of %B, %Y"
   places:
     index:
+      welcome: "Hello"
       id: "Place Id"
       comments: "Comment"
       owner_id: "Owner Id"

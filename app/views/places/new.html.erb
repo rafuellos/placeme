@@ -1,5 +1,18 @@
-<h1>New Place</h1>
 
-<%= render 'form' %>
+<div class="row add-modal-header">
+  
+  <div class="col col-xs-10">
+    <h4 class="color">Add a new place</h4> 
+  </div>
 
-<%= link_to 'Back', user_places_path %>
+  <div class="col col-xs-2">
+    <button type="button" class="btn btn-warning cancel-button" data-dismiss="modal">Cancel</button>
+  </div>
+
+</div>
+<hr>   
+
+<div class="col col-xs-12">
+  <%= render 'form' %>
+</div>
+

@@ -10,17 +10,26 @@ class PlacesController < ApplicationController
       }
     ) or return
     @places = @filterrific.find.page(params[:page])
-
     respond_to do |format|
       format.html
       format.js
     end
+    
+  end
+
+  def show
+    @place = Place.find(params[:id])
+    authorize @place
+    #render :layout => false
   end
 
 
   def new
     @place = Place.new(owner_id: current_user.id)
     skip_authorization
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -64,7 +73,7 @@ class PlacesController < ApplicationController
   private
 
     def place_params
-      params.require(:place).permit(:comments, :photo)
+      params.require(:place).permit(:comments, :photo, :title, :longitude, :latitude)
     end
 
 
