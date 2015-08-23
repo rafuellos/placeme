@@ -7,7 +7,7 @@
 
     <div class="gallery col-xs-12 text-center">
        <% @places.each do |place| %>
-        <%= link_to user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Show"}  do%>
+        <%= link_to user_place_path(current_user.id, place.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-show"} do%>
           <div class='place'>
             <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
             <content class="place-contents">

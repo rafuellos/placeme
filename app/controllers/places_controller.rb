@@ -17,6 +17,12 @@ class PlacesController < ApplicationController
     end
   end
 
+  def show
+    @place = Place.find(params[:id])
+    authorize @place
+    render :layout => false
+  end
+
 
   def new
     @place = Place.new(owner_id: current_user.id)
