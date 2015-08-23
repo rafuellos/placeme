@@ -33,13 +33,12 @@
      <%= @place.title %>
      <p class="color">Details</p>
      <%= @place.comments %>
-     <p class="color">Located at</p>
-     <%= @place.title %>
+     <p class="color">Located at:</p>
+     Latitude: <%= @place.latitude %><br>Longitude: <%= @place.longitude %>
    </div> 
 
-   <div class="col col-xs-4 field">
-
-     <img src="https://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=13&size=400x300">
+   <div class="col col-xs-4 field text center">
+     <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=300x300&markers=color:blue|label:P|<%= @place.latitude %>,<%= @place.longitude %>">
      <div class="add-actions text-center">
        <%= link_to 'Back to gallery', user_places_path(current_user.id), class: "btn btn-default create-place" %>
      </div>
