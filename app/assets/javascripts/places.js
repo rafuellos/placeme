@@ -1,6 +1,45 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $( document ).ready(function() {
+  if ("geolocation" in navigator) {
+      getLocation();
+    } else {
+      alert("Geolocation is not available")
+    }
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function getLocation() {
+    console.log('Getting location...'); 
+    navigator.geolocation.getCurrentPosition(onLocation, onError, options);
+  }
+
+  function onLocation (position) {
+    console.log("Got it!");
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var coord = {latitude: lat,
+                 longitude: lon
+               };
+    console.log(coord);
+    $.get('/users/set_coordinates', coord).done(
+      function(result) {
+        console.log('enviando al current_user');
+      }
+    ).fail(
+      console.log('problems')
+    )
+  }
+
+  function onError(error) {
+    console.log("Getting location failed: " + error);
+  }
+
+
   $(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });

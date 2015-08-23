@@ -40,7 +40,7 @@
    <div class="col col-xs-4 field text center">
      <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=300x300&markers=color:blue|label:P|<%= @place.latitude %>,<%= @place.longitude %>">
      <div class="add-actions text-center">
-        <a href="https://www.google.com/maps/dir/<%= @place.latitude %>,<%= @place.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" class="btn btn-default create-place" >Navigate</a>
+        <a href="https://www.google.com/maps/dir/<%= current_user.latitude %>,<%= current_user.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" class="btn btn-default create-place" target="_blank" >Navigate</a>
      </div>
    </div>   
 
