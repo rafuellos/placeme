@@ -1,3 +1,5 @@
+
+
 .place, .comment, .date {
 display: block;
 }
@@ -137,6 +139,13 @@ display: block;
   border: 1px solid #F6A25C;
   margin-bottom: 10px;
 }
+
+.show-photo {
+  width: 350px;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+}
+
 .places-images-modal {
   border-radius: 2px;
 }
@@ -322,3 +331,4 @@ input.btn.btn-default.create-place {
 .cancel-button {
   margin-top: 10px;
 }
+

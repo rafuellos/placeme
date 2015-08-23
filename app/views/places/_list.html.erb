@@ -7,7 +7,7 @@
 
     <div class="gallery col-xs-12 text-center">
        <% @places.each do |place| %>
-        <%= link_to user_place_path(current_user.id, place.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-show"} do%>
+        <%= link_to user_place_path(current_user.id, place.id), class: 'action-style button-link' do%>
           <div class='place'>
             <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
             <content class="place-contents">
@@ -21,7 +21,7 @@
                 <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Edit"}  do%>
                   <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
                 <% end %>
-                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' , data: {toggle: "tooltip", placement: "right", title:"Delete"} do%>
+                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' do%>
                   <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
                 <% end %>
               </div>
