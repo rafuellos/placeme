@@ -7,25 +7,28 @@
 
     <div class="gallery col-xs-12 text-center">
        <% @places.each do |place| %>
-        <div class='place'>
-          <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
-          <content class="place-contents">
-            <%= content_tag(:div, place.comments, class: 'place-comments') %> 
-            <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
-            
-            <div class='action'>
-              <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
-              <% end %>
-              <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Edit"}  do%>
-                <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
-              <% end %>
-              <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' , data: {toggle: "tooltip", placement: "right", title:"Delete"} do%>
-                <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
-              <% end %>
-            </div>
-          </content> 
-        </div>
+        <%= link_to user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Show"}  do%>
+          <div class='place'>
+            <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
+            <content class="place-contents">
+              <%= content_tag(:div, place.comments, class: 'place-comments') %> 
+              <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
+              
+              <div class='action'>
+                <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                  <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
+                <% end %>
+                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Edit"}  do%>
+                  <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
+                <% end %>
+                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' , data: {toggle: "tooltip", placement: "right", title:"Delete"} do%>
+                  <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
+                <% end %>
+              </div>
+            </content> 
+          </div>
+        <% end %>
+        
       <% end %>
     </div>    
   </div>

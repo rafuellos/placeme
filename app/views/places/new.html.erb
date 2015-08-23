@@ -1,13 +1,16 @@
-<div class="col col-xs-1 col-xs-offset-11 text-right">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span class="color-secondary" aria-hidden="true">&times;</span>
-  </button>  
-</div>
 
-<div class="col col-xs-12">
-  <h4 class="color">Add a new place</h4> 
-  <hr>   
+<div class="row add-modal-header">
+  
+  <div class="col col-xs-10">
+    <h4 class="color">Add a new place</h4> 
+  </div>
+
+  <div class="col col-xs-2">
+    <button type="button" class="btn btn-warning cancel-button" data-dismiss="modal">Cancel</button>
+  </div>
+
 </div>
+<hr>   
 
 <div class="col col-xs-12">
   <%= render 'form' %>

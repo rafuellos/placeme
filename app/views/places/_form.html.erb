@@ -12,31 +12,34 @@
     </div>
   <% end %>
 
-  
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col col-xs-4 field">
+        <%= f.label :photo, 'Add a new photo', class: 'color' %><br>
+        <div id="target" class="photo-frame"></div>
+        <%= f.file_field :photo, :id => 'pictureInput' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :photo, 'Add a new photo', class: 'color' %><br>
-    <div id="target" class="photo-frame"></div>
-    <%= f.file_field :photo, :id => 'pictureInput' %>
-  </div>
+      <div class="col col-xs-4 field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %><br>
 
+        <%= f.label :comments %><br>
+        <%= f.text_field :comments %><br>
 
+        <%= f.label :longitude %><br>
+        <%= f.text_field :longitude %><br>
 
-  <div class="field">
-
-    <%= f.label :comments %><br>
-    <%= f.text_field :comments %>
-  </div>
- <!--  <div class="field">
-    <%= f.label :owner %><br>
-    <%= f.number_field :owner %>
-  </div> -->
-
-  <div class="actions">
-    <%= f.submit %>
+        <%= f.label :latitude %><br>
+        <%= f.text_field :latitude %><br>
+      </div>  
+    </div>
+    <div class="col col-xs-12 text-center">
+      
+      <div class="add-actions">
+        <%= f.submit class: "btn btn-default create-place" %>
+      </div>
+    </div>
   </div>
 
 <% end %>
-
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-primary">Save changes</button>

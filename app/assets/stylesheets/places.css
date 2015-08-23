@@ -1,4 +1,3 @@
-
 .place, .comment, .date {
 display: block;
 }
@@ -136,6 +135,7 @@ display: block;
 .photo-frame {
   border-radius: 2px;
   border: 1px solid #F6A25C;
+  margin-bottom: 10px;
 }
 .places-images-modal {
   border-radius: 2px;
@@ -208,10 +208,10 @@ div.col-xs-12.page-text {
 
 .menu-for-user {
   background-color: #009999;
-  height:50vh;
+  height:50%;
   border-radius: 3px;
-  margin-top: 25vh;
-  padding-left: 1opx;
+  margin-top: 10vh;
+  padding-left: 10px;
 }
 
 input[type=text],
@@ -305,3 +305,20 @@ body.loading .modal {
   min-width: 140px;
 }
 
+.add-modal-header {
+  margin-top: 10px;
+
+}
+
+.add-actions {
+  margin: 10px 0;
+}
+
+input.btn.btn-default.create-place {
+  background-color: #009999; 
+  color: white;
+}
+
+.cancel-button {
+  margin-top: 10px;
+}
