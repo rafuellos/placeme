@@ -338,7 +338,8 @@ body.loading .modal {
   margin: 10px 0;
 }
 
-input.btn.btn-default.create-place {
+input.btn.btn-default.create-place, 
+a.btn.btn-default.create-place.navigate  {
   background-color: #009999; 
   color: white;
   margin-top: 20px;

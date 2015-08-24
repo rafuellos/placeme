@@ -14,6 +14,5 @@ class UsersController < ApplicationController
       current_user.latitude = params[:latitude]
       current_user.save
     end
-    
-
+      
 end

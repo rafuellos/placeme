@@ -54,6 +54,17 @@ $( document ).ready(function() {
   function getLocation() {
     console.log('Getting location...'); 
     navigator.geolocation.getCurrentPosition(setLocation, onError, options);
+  }
+
+
+  function setLocation (position) {
+    console.log("Got it!");
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    console.log(lat);
+    console.log(lon);
+    $('#latitude-place').val(lat);
+    $('#longitude-place').val(lon);
     var coord = {
                   latitude: lat,
                   longitude: lon
@@ -66,17 +77,6 @@ $( document ).ready(function() {
       ).fail(
       console.log('problems')
       );
-  }
-
-
-  function setLocation (position) {
-    console.log("Got it!");
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    console.log(lat);
-    console.log(lon);
-    $('#latitude-place').val(lat);
-    $('#longitude-place').val(lon);
   }
 
 
