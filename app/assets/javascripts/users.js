@@ -27,42 +27,29 @@ $(document).ready(function() {
                         };
 
       var leftPos = (props.viewPortWidth - props.oLayWidth) / 2;
+      $oLay
+        .css({display : 'block', opacity : 0, top : '-=300', left : leftPos+'px'})
+        .animate({ top : props.scrTop + 120, opacity : 1 }, 300);
+      });
+  }
 
-            $oLay
-                .css({
-                    display : 'block',
-                    opacity : 0,
-                    top : '-=300',
-                    left : leftPos+'px'
-                })
-                .animate({
-                    top : props.scrTop + 40,
-                    opacity : 1
-                }, 600);
-        });
-    }
-
-    function closeOverlay() {
-        $('.overlay').animate({
-            top : '-=300',
-            opacity : 0
-        }, 400, function() {
-            $('#overlay-shade').fadeOut(300);
-            $(this).css('display','none');
-        });
-    }
+  function closeOverlay() {
+    $('.overlay').animate({ top : '-=300', opacity : 0 }, 400, function() {
+        $('#overlay-shade').fadeOut(300);
+        $(this).css('display','none');
+    });
+  }
     
-    $('body').on('click','#overlay-shade, .overlay a', function(e) {
+  $('body').on('click','#overlay-shade, .overlay a', function(e) {
         closeOverlay();
         if ($(this).attr('href') == '#') e.preventDefault();
-    });
+  });
     
     
-    // Usage
-    $('#overlaylaunch-inAbox').click(function(e) {
-       openOverlay('#overlay-inAbox');
-       e.preventDefault();
-    });
+  $('#overlaylaunch-signIn').click(function(e) {
+     openOverlay('#overlay-signIn');
+     e.preventDefault();
+  });
 
 
 });

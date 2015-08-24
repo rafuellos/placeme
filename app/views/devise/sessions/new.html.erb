@@ -26,13 +26,15 @@
         <div class="item active">
           <img src="..." alt="...">
           <div class="carousel-caption">
-            ...
+            <h3>1</h3>
+            <p>slide 1</p>
           </div>
         </div>
         <div class="item">
           <img src="..." alt="...">
           <div class="carousel-caption">
-            ...
+            <h3>2</h3>
+            <p>slide 2</p>
           </div>
         </div>
         ...
@@ -53,64 +55,61 @@
   
 </div>
 
-<div id="overlay-inAbox" class="overlay">
+<div class="row">
+  <div id="overlay-signIn" class="overlay">
     <div class="toolbar"><a class="close" href="#"><i class="fa fa-times-circle fa-2x"></i></a></div>
     <div class="wrapper">
-        Welcome to Place!Me
+        <div class="col col-xs-4 col-xs-offset-4 text-center boston-text">
+          Welcome to Place!Me
+        </div> 
+        <div class="col col-xs-12 text-center text-log-in">
+          Please Log In
+        </div>
 
-        <h2>Log in</h2>
+        <div class="col col-xs-6 col-xs-offset-3">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field text-log-in">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true %>
+            </div>
 
-        <form action="/my-handling-form-page" method="post">
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" />
+            <div class="field text-log-in">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off" %>
             </div>
-            <div>
-                <label for="mail">E-mail:</label>
-                <input type="email" id="mail" />
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div class="actions">
+              <%= button_tag(type: "submit", class: "btn btn-default") do %>
+                <i class="fa fa-sign-in"> Sign In</i>
+              <% end %>
             </div>
-            <div>
-                <label for="msg">Message:</label>
-                <textarea id="msg"></textarea>
-            </div>
-        </form>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+          
 
     </div>
-</div>
-
-
-<button href="#" id="overlaylaunch-inAbox"><i class="fa fa-sign-in"> Sign In</i></button>
-
-<div class="overlay">
+  </div>
   
-  <h2>Log in</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field border-down">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
 
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
+</div>
+  
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
-    </div>
-  <% end %>
 
-  <%= render "devise/shared/links" %>
+<button href="#" id="overlaylaunch-signIn"><i class="fa fa-sign-in"> Sign In</i></button>
+
 
 
   
-</div>
+
 

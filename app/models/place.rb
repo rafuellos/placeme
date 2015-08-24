@@ -38,7 +38,7 @@ class Place < ActiveRecord::Base
     where(
       terms.map {
         or_clauses = [
-          "LOWER(places.comments) LIKE ?"
+          "LOWER(places.title) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),
