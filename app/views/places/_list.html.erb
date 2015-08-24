@@ -11,7 +11,7 @@
           <div class='place'>
             <%= image_tag place.photo.url(:medium), alt: place.id, class: 'places-images'%>
             <content class="place-contents">
-              <%= content_tag(:div, place.comments, class: 'place-comments') %> 
+              <%= content_tag(:div, place.title, class: 'place-title') %> 
               <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
               
               <div class='action'>

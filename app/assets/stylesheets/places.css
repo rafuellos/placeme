@@ -1,4 +1,4 @@
-
+html, body, #map_canvas { margin: 0; padding: 0; height: 50vh }
 
 .place, .comment, .date {
 display: block;
@@ -85,12 +85,12 @@ display: block;
   z-index: 5;
 }
 
-.place-comments, .place-date {
+.place-title, .place-date {
   font-family: 'Reenie Beanie', cursive;
   color: #076969;
   text-align: left;
   letter-spacing:0.09em;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-backface-visibility: hidden;
 }
 .place-date {

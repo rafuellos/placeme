@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $( document ).ready(function() {
+
   if ("geolocation" in navigator) {
       getLocation();
     } else {
@@ -47,37 +48,81 @@ $( document ).ready(function() {
     console.log("Got it!");
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    $('#longitude_place').val(lon);
-    $('#latitude_place').val(lat);
+    $('#longitude-place').val(lon);
+    $('#latitude-place').val(lat);
+    //displayMap(lat,lon)
+  }
 
+  function displayMap(lat, lon) {
+    var urlRoot = "https://maps.googleapis.com/maps/api/staticmap?center=";
+    var urlParams = "&zoom=13&size=400x300";
+    var url = urlRoot + lat + "," + lon + urlParams;
+    var map = $('map-for-location');
+    map.setAttribute("src", url);
+    console.log(url);
+  }
+
+  $('#modal-add').on('loaded.bs.modal', function(){
+  console.log('showing the modal')    
+    initMap();
+  });
+
+
+  var map;
+  var geocoder;
+  var mapOptions = { center: new google.maps.LatLng(0.0, 0.0), zoom: 2,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP };
+
+  function initMap() {
+    console.log('paint the map?')
+    console.log($("#map_canvas").val()); 
+    var myOptions = {
+                      center: new google.maps.LatLng(36.835769, 10.247693 ),
+                      zoom: 15,
+                      mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+    geocoder = new google.maps.Geocoder();
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+    myOptions);
+    console.log(map);
+    google.maps.event.addListener(map, 'click', function(event) {
+      placeMarker(event.latLng);
+    });
+
+    var marker;
+    function placeMarker(location) {
+      if(marker){ 
+          marker.setPosition(location);
+      }else{
+          marker = new google.maps.Marker({
+              position: location, 
+              map: map
+          });
+      }
+      document.getElementById('latitude-place').value=location.lat();
+      document.getElementById('longitude-place').value=location.lng();
+      getAddress(location);
+    }
+
+  function getAddress(latLng) {
+    geocoder.geocode( {'latLng': latLng},
+      function(results, status) {
+        if(status == google.maps.GeocoderStatus.OK) {
+          if(results[0]) {
+            document.getElementById("address-place").value = results[0].formatted_address;
+          }
+          else {
+            document.getElementById("address-place").value = "No results";
+          }
+        }
+        else {
+          document.getElementById("address-place").value = status;
+        }
+      });
+    }
   }
 
 
-
-  $(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-  });
-
-  
-
-  $('#modal-add').on('change', '#pictureInput', function(event){
-    console.log('entra');
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      img.src = file.target.result;
-      $('#target').html(img);
-      $('#target').removeClass('photo-frame');
-      $('#modal-add #target img').load(function () {  
-        $(this).addClass('places-images-modal');
-
-      });
-    }
-    reader.readAsDataURL(image);
-    console.log(files);
-  });
 });
 
