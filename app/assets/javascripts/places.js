@@ -99,25 +99,26 @@ $( document ).ready(function() {
               position: location, 
               map: map
           });
-      }
-      document.getElementById('latitude-place').value=location.lat();
-      document.getElementById('longitude-place').value=location.lng();
+      };
+      $('#latitude-place').val(location.lat());
+      $('#longitude-place').val(location.lng());
       getAddress(location);
     }
 
   function getAddress(latLng) {
     geocoder.geocode( {'latLng': latLng},
       function(results, status) {
+        var $place = $('#address-place');
         if(status == google.maps.GeocoderStatus.OK) {
           if(results[0]) {
-            document.getElementById("address-place").value = results[0].formatted_address;
+            $place.val(results[0].formatted_address);
           }
           else {
-            document.getElementById("address-place").value = "No results";
+            $place.val("No results");
           }
         }
         else {
-          document.getElementById("address-place").value = status;
+          $place.val(status);
         }
       });
     }

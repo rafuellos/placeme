@@ -20,7 +20,6 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     authorize @place
-    #render :layout => false
   end
 
 
@@ -73,7 +72,7 @@ class PlacesController < ApplicationController
   private
 
     def place_params
-      params.require(:place).permit(:comments, :photo, :title, :longitude, :latitude)
+      params.require(:place).permit(:comments, :photo, :title, :longitude, :latitude, :address)
     end
 
 

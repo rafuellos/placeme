@@ -1,7 +1,15 @@
-html, body, #map_canvas { margin: 0; padding: 0; height: 50vh }
+html, body, #map_canvas { 
+  margin-top: 0px;
+  padding: 0; 
+  height: 200px; 
+}
+
+#map_canvas {
+  margin: 5px;
+}
 
 .place, .comment, .date {
-display: block;
+  display: block;
 }
 
 .gallery{
@@ -333,12 +341,39 @@ body.loading .modal {
   margin: 10px 0;
 }
 
-input.btn.btn-default.create-place {
+.create-place {
   background-color: #009999; 
   color: white;
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
 .cancel-button {
   margin-top: 10px;
 }
 
+.place-text-area {
+  height: 100px;
+  overflow: hidden;
+  resize: none;
+}
+
+.place-address {
+  height: 29px;
+  width: 300px;
+}
+
+.data-location-place {
+  display: inline-flex;
+}
+
+.coord-place {
+  width: 125px;
+  text-align: center;
+
+}
+
+.im-centered { 
+  margin: auto; 
+  max-width: 800px;
+}
