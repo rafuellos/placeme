@@ -1,7 +1,7 @@
 html, body, #map_canvas { 
   margin-top: 0px;
   padding: 0; 
-  height: 200px; 
+  height: 300px; 
 }
 
 #map_canvas {
@@ -136,23 +136,21 @@ html, body, #map_canvas {
 }
 
 
-.places-images, .places-images-modal, .photo-frame {
+.places-images, .places-images-modal {
   width: 200px;
   height: 200px;
   -webkit-backface-visibility: hidden;
 }
 
-.photo-frame,
-.map-frame {
+.photo-frame {
   border-radius: 2px;
   border: 1px solid #F6A25C;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  width: 250px;
+  height: 250px;
+
 }
 
-.map-frame {
-  width: 325px;
-  height: 325px;
-}
 
 .show-photo {
   width: 350px;
@@ -245,9 +243,8 @@ input[type=text],
 select#filterrific_search_query, 
 select#filterrific_with_owner_id, 
 select#filterrific_sorted_by, 
-
 .text-search {
-  font-size: 16px;
+  font-size: 15px;
   color: #009999;
 }
 
@@ -341,7 +338,7 @@ body.loading .modal {
   margin: 10px 0;
 }
 
-.create-place {
+input.btn.btn-default.create-place {
   background-color: #009999; 
   color: white;
   margin-top: 20px;
@@ -358,22 +355,37 @@ body.loading .modal {
   resize: none;
 }
 
+.data-location-place {
+  display: inline-flex;
+}
 .place-address {
   height: 29px;
   width: 300px;
-}
-
-.data-location-place {
-  display: inline-flex;
+  color: #009999;
+  font-size: 15px;
 }
 
 .coord-place {
   width: 125px;
   text-align: center;
+  font-size: 15px;
 
 }
 
 .im-centered { 
   margin: auto; 
   max-width: 800px;
+}
+
+button#set_location {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.col.col-xs-12.text-center.data-location-place {
+  margin-top: 25px;
+}
+
+.col.col-xs-3.field {
+  margin-top: 55px;
 }
