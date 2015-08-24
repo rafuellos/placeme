@@ -342,8 +342,11 @@ input.btn.btn-default.create-place,
 a.btn.btn-default.create-place.navigate  {
   background-color: #009999; 
   color: white;
+}
+input.btn.btn-default.create-place {
   margin-top: 20px;
   margin-left: 40px;
+  
 }
 
 .cancel-button {
@@ -390,3 +393,8 @@ button#set_location {
 .col.col-xs-3.field {
   margin-top: 55px;
 }
+
+.details {
+  margin-bottom: 20px;
+}
+
