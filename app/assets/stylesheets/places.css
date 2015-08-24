@@ -159,8 +159,9 @@ html, body, #map_canvas {
 }
 
 .logo-style {
-  width: 200px;
+  width: 13em;
   height: auto;
+  margin: 15px 0;
   -webkit-backface-visibility: hidden;
 }
 .places-images-modal {
@@ -190,6 +191,7 @@ div.container-fluid {
 .container-fluid.menu-for-user.text-center {
   padding-left: 5px;
   margin-left: 5px;
+  margin-top: 55px;
 
 }
 
@@ -234,7 +236,7 @@ div.col-xs-12.page-text {
 
 .menu-for-user {
   background-color: #009999;
-  min-height: 480px;
+  min-height: 550px;
   border-radius: 3px;
   padding-left: 10px;
 }
@@ -398,3 +400,6 @@ button#set_location {
   margin-bottom: 20px;
 }
 
+.buttons-menu-for-user {
+  margin: 15px 0;
+}

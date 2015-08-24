@@ -4,7 +4,7 @@
       <%= image_tag("logoPlaceMe.png", :alt => "rss feed", class: 'logo-style') %>
       <div class='welcome'><%= t '.welcome' %> <%= current_user.name %>!</div>
 
-      <div>
+      <div class="buttons-menu-for-user">
         <%= link_to new_user_place_path(current_user.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-add"} do%>
           <span class="fa-stack fa-3x", data-toggle="tooltip modal" data-placement="right" title="Add a place", data-taget='#modal-add'>
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -12,7 +12,7 @@
         <% end %>   
       </div>
 
-      <div>
+      <div class="buttons-menu-for-user">
         <%= link_to user_places_path(current_user.id), class: 'action-style' do%>
           <span class="fa-stack fa-3x", data-toggle="tooltip" data-placement="right" title="Search places">
             <i class="fa fa-circle fa-stack-2x"></i>
@@ -22,7 +22,7 @@
 
 
     
-        <div class="btn-group closed white">
+      <div class="btn-group closed white buttons-menu-for-user">
           
           <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
             <span class="fa fa-cog color"></span></a>
@@ -36,7 +36,8 @@
             <li><%= link_to "English", :controller => 'settings', :action => 'change_locale', :locale => 'en' %></li>
           </ul>
         </div>
-    </div>
+      </div>
+
       <p id="notice" class="color"><%= notice %></p>
 </div>
 
