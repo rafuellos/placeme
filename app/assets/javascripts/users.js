@@ -12,8 +12,8 @@ $(document).ready(function() {
   });
 
 
-  function openOverlay(olEl) {
-    $oLay = $(olEl);
+  function openOverlay(overlay) {
+    $oLay = $(overlay);
     $window = $(window)
         
     if ($('#overlay-shade').length == 0)
@@ -44,7 +44,6 @@ $(document).ready(function() {
         closeOverlay();
         if ($(this).attr('href') == '#') e.preventDefault();
   });
-    
     
   $('#overlaylaunch-signIn').click(function(e) {
      openOverlay('#overlay-signIn');
