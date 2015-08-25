@@ -25,6 +25,11 @@
     display: inline-flex;
 }
 
+.form-items {
+  margin-right: 20px;
+  margin-bottom: 25px;
+}
+
 a#overlaylaunch-inAbox {
     display: block;
     padding: 40px;
@@ -57,9 +62,9 @@ a#overlaylaunch-inAbox {
     width: 90%;
     min-height: 200px;
     z-index: 10000;
-    background-color: rgba(0, 153, 153, 0.9);
+    background-color: rgba(256, 256, 256, 0.9);
     border-radius: 1px;
-    color: #fff;
+    color: #009999;
     box-shadow: 0 0 16px #000;
 } .ie7 .overlay {
     height: 200px;

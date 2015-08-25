@@ -6,7 +6,9 @@
   </div>
 
   <div class="col col-xs-2">
-    <button type="button" class="btn btn-warning cancel-button" data-dismiss="modal">Cancel</button>
+    <div class="add-actions">
+      <%= link_to 'Back to gallery', user_places_path(current_user.id), class: "btn btn-default create-place" %>
+    </div>
   </div>
 
 </div>

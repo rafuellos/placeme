@@ -34,6 +34,7 @@ $( document ).ready(function() {
     var href = "https://www.google.com/maps/dir/" + latitude + "," + longitude + "/" +  $navigateButton.attr('latitude') + "," + $navigateButton.attr('longitude')
     console.log(href);
     $navigateButton.attr("href", href);
+    $('#location-map').attr("href", href);
   };
 
 
@@ -64,6 +65,11 @@ $( document ).ready(function() {
 
   $('#modal-add').on('loaded.bs.modal', function(){
     console.log('showing the modal')    
+    initMap();    
+  });
+
+  $('.edit-action').on('click', function(){
+    console.log('showing the map')    
     initMap();    
   });
 

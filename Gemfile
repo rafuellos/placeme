@@ -4,6 +4,7 @@ gem 'pundit'
 
 gem 'leaflet-rails'
 
+gem 'cartodb-rb-client'
 
 
 gem "paperclip", "~> 4.3"
