@@ -66,18 +66,12 @@ $( document ).ready(function() {
     console.log('showing the modal')    
     initMap();
 
-    $('#modal-add').on('click', '#set_location', function(event){
-      initMap();
-    });
+    
   });
 
 
 
   function initMap() {
-
-    navigator.geolocation.getCurrentPosition(setLocation, onError, options);
-    console.log(lat);
-    console.log(lon)
    
     var myOptions = {
                       center: new google.maps.LatLng(lat, lon ),
@@ -85,16 +79,22 @@ $( document ).ready(function() {
                       mapTypeId: google.maps.MapTypeId.ROADMAP
                     };
 
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     geocoder = new google.maps.Geocoder();
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-    myOptions);
-
 
     google.maps.event.addListener(map, 'click', function(event) {
       console.log(event.latLng)
       placeMarker(event.latLng);
     });
-    console.log(map.center)
+
+    $('#modal-add').on('click', '#set_location', function(event){
+      navigator.geolocation.getCurrentPosition(function (position) {
+      initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      map.setCenter(initialLocation);
+      placeMarker(initialLocation);
+      });
+    });
+
     placeMarker(map.center);
 
     function placeMarker(location) {
