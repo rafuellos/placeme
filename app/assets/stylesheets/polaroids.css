@@ -96,3 +96,14 @@
   font-size: 0.9em;
 
 }
+
+.action {
+  float: right;
+  margin-top: -15px;
+}
+
+.place-button {
+  margin-left: 7px; 
+  margin-top: -15px;
+
+}

@@ -21,6 +21,10 @@
   background-color: #009999 
 }
 
+.sign-in-form{
+    display: inline-flex;
+}
+
 a#overlaylaunch-inAbox {
     display: block;
     padding: 40px;
