@@ -18,16 +18,16 @@ $( document ).ready(function() {
 
   if ("geolocation" in navigator) {
       console.log('Everything is ok with the geolocation');
-      getLocation();
+      //getLocation();
   } else {
       alert("Geolocation is not available")
   }
 
 
-  $navigateButton = $('#navigateButton');
-  $navigateButton.on('click', function(){
-    navigator.geolocation.getCurrentPosition(setLocation, onError, options);
-  });
+  if ($('#navigateButton').length > 0 || $('#modal-add').length > 0){  
+      getLocation();
+  }
+  
 
   function paintLink(latitude, longitude){
     console.log(latitude);
@@ -40,7 +40,6 @@ $( document ).ready(function() {
   function getLocation() {
     console.log('Getting location...'); 
     navigator.geolocation.getCurrentPosition(setLocation, onError, options);
-    console.log
   }
 
 
@@ -48,11 +47,12 @@ $( document ).ready(function() {
     console.log("Got it!");
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    console.log(lat);
-    console.log(lon);
     $('#latitude-place').val(lat);
     $('#longitude-place').val(lon);
-    paintLink(lat,lon)
+    if ($('#navigateButton').length > 0){
+      $navigateButton = $('#navigateButton');
+      paintLink(lat,lon)  
+    };
   }
 
 
@@ -64,9 +64,7 @@ $( document ).ready(function() {
 
   $('#modal-add').on('loaded.bs.modal', function(){
     console.log('showing the modal')    
-    initMap();
-
-    
+    initMap();    
   });
 
 
@@ -83,16 +81,15 @@ $( document ).ready(function() {
     geocoder = new google.maps.Geocoder();
 
     google.maps.event.addListener(map, 'click', function(event) {
-      console.log(event.latLng)
       placeMarker(event.latLng);
     });
 
     $('#modal-add').on('click', '#set_location', function(event){
       navigator.geolocation.getCurrentPosition(function (position) {
-      initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      map.setCenter(initialLocation);
-      placeMarker(initialLocation);
-      });
+        initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(initialLocation);
+        placeMarker(initialLocation);
+      }, onError, options);
     });
 
     placeMarker(map.center);
