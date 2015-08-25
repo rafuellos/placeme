@@ -29,19 +29,31 @@
    </div>
 
    <div class="col col-xs-2 field">
-     <p class="color">Title</p>
-     <%= @place.title %>
-     <p class="color">Details</p>
-     <%= @place.comments %>
-     <p class="color">Located at</p>
-     <%= @place.title %>
+      <div class="details">
+        <div class="color">Title</div>
+        <div><%= @place.title %></div>
+        <div class="color">Details</div>
+        <div><%= @place.comments %></div>
+      </div>
+      <div class="details">
+        <p class="color">Located at:</p>
+        <div>Address:</div>
+        <div><%= @place.address %></div>
+        <hr>
+        <div>
+          <div>Latitude: <%= @place.latitude %></div>
+          <div>Longitude: <%= @place.longitude %></div>
+        </div> 
+      </div>
    </div> 
+  
+   <div class="col col-xs-4 field text center">
+      <a href="https://www.google.com/maps/dir/<%= current_user.latitude %>,<%= current_user.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" target="_blank" >
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=370x300&markers=color:blue|label:P|<%= @place.latitude %>,<%= @place.longitude %>">
+      </a>
 
-   <div class="col col-xs-4 field">
-
-     <img src="https://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=13&size=400x300">
      <div class="add-actions text-center">
-       <%= link_to 'Back to gallery', user_places_path(current_user.id), class: "btn btn-default create-place" %>
+        <a href="https://www.google.com/maps/dir/<%= current_user.latitude %>,<%= current_user.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" class="btn btn-default create-place navigate" target="_blank" >Navigate</a>
      </div>
    </div>   
 

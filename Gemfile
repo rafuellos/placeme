@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
-gem 'rails-assets-bootstrap'
-#gem 'font-awesome-sass'
+
+gem 'leaflet-rails'
+
 
 
 gem "paperclip", "~> 4.3"
@@ -58,5 +59,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-materialize'
+  gem 'rails-assets-bootstrap'
 end
