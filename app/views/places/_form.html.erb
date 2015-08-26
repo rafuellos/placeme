@@ -29,6 +29,7 @@
           <%= f.label :comments, class: "color" %><br>
           <%= f.text_area :comments, class: "place-text-area",id: "form-comments-place"  %><br>          
         </div>
+        <div id="form-user-place" class="white" value= <%= current_user.id %>></div>
         
       </div> 
  
@@ -42,17 +43,17 @@
         <div class="col col-xs-12 text-center data-location-place">
           <div>  
             <%= f.label :address %><br>
-            <%= f.text_area :address, id: 'address-place', class: "address-place place-text-area place-address", id: "form-address-place" %>
+            <%= f.text_area :address, id: 'address-place', class: "address-place place-text-area place-address" %>
           </div>
 
           <div>
             <%= f.label :longitude %><br>
-            <%= f.text_field :longitude, id: 'longitude-place', class: "coord-place", id: "form-longitude-place" %>
+            <%= f.text_field :longitude, id: 'longitude-place', class: "coord-place" %>
           </div>
 
           <div>
               <%= f.label :latitude %><br>
-            <%= f.text_field :latitude, id: 'latitude-place', class: "coord-place",id: "form-tatitude-place" %>
+            <%= f.text_field :latitude, id: 'latitude-place', class: "coord-place"%>
           </div>
           
           <div>
