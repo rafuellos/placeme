@@ -32,9 +32,7 @@ $( document ).ready(function() {
       var urlCreate = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
               + sqlStatement1 + sqlStatement2 + "&api_key=" + cartoKey;
       console.log(urlCreate);
-      $.post(urlCreate, function(data) {
-        console.log(data);
-    });
+      sendPostToTable(urlCreate);
   }); 
 
   $('#delete-link').on('click', function(event){
@@ -43,7 +41,7 @@ $( document ).ready(function() {
     var deleteLinkTitle = $('#delete-link').attr('data-placetitle');
     var deleteLinkComment = $('#delete-link').attr('data-comments');
 
-    console.log("El place" + deleteLinkTitle + " con comment " + deleteLinkComment);
+    //console.log("El place" + deleteLinkTitle + " con comment " + deleteLinkComment);
 
     var sqlDelete = "DELETE FROM places_table WHERE title = '" + deleteLinkTitle +"' AND comments = '" + deleteLinkComment + "'";
     console.log(sqlDelete);
