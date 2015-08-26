@@ -58,8 +58,56 @@ $( document ).ready(function() {
 
 
 //Inserting the map in the visualization for places when pressed the button with the world icon
-  window.onload = function() {
-    cartodb.createVis('map', 'http://documentation.cartodb.com/api/v2/viz/2b13c956-e7c1-11e2-806b-5404a6a683d5/viz.json');
+  if ($('#map-menu').length > 0) {  
+      setMapCenterLocation();
+  };
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function setMapCenterLocation() {
+    console.log('Getting location...'); 
+    navigator.geolocation.getCurrentPosition(function(position){
+      console.log("Getting map center location!");
+      var centerLat = position.coords.latitude;
+      var centerLon = position.coords.longitude;
+      paintCartoMap(centerLat, centerLon);  
+    }, onError, options);
+  };
+
+  function paintCartoMap(lat, lon) {
+    //id = user-places-map
+    console.log("pintando el mapa de Cartodb")
+    var map = new L.Map('user-places-map', {
+        center: [lon,lat],
+        zoom: 5,
+        zoomControl: true
+      });
+
+    cartodb.createVis('user-places-map', 'https://rafuellos.cartodb.com/api/v2/viz/a0ff9b54-4bf1-11e5-a0ae-0e0c41326911/viz.json');
+
+    cartodb.createLayer(map, 'https://rafuellos.cartodb.com/api/v2/viz/a0ff9b54-4bf1-11e5-a0ae-0e0c41326911/viz.json')
+        .addTo(map)
+        .on('done', function(layer) {
+          layer.setInteraction(true);
+          layer.on('featureOver', function(e, latlng, pos, data) {
+            cartodb.log.log(e, latlng, pos, data);
+          });
+          layer.on('error', function(err) {
+            cartodb.log.log('error: ' + err);
+          });
+        })
+        .on('error', function(err) {
+          alert("some error occurred: " + err);
+        });
+
+  }
+
+  function onError(error) {
+    console.log("Getting the current location failed: " + error);
   }
 
 });

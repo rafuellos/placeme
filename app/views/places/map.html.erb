@@ -1,10 +1,10 @@
-<div class="col-xs-2">
+<div class="col-xs-2" id="map-menu">
   <div class="container-fluid menu-for-user text-center">
     <%= image_tag("logoPlaceMe.png", :alt => "rss feed", class: 'logo-style') %>
     <div class='welcome'><%= t '.welcome' %> <%= current_user.name %>!</div>
 
     <div class="buttons-menu-for-user">
-      <%= link_to places_map_path(current_user.id), class: 'action-style' do%>
+      <%= link_to user_places_path(current_user.id), class: 'action-style' do%>
         <span class="fa-stack fa-3x", data-toggle="tooltip" data-placement="right" title="Back to the Gallery">
           <i class="fa fa-circle fa-stack-2x"></i>
           <i class="fa fa-picture-o fa-stack-1x fa-reverse color"></i>
@@ -27,4 +27,8 @@
     </div>
   </div>
 
+</div>
+
+<div class="col col-xs-12"> 
+  <div id="user-places-map"></div>
 </div>
