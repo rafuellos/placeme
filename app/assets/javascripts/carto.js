@@ -83,8 +83,8 @@ $( document ).ready(function() {
     console.log("pintando el mapa de Cartodb")
     var map = new L.Map('user-places-map', {
         center: [lon,lat],
-        zoom: 5,
-        zoomControl: true
+        zoom: 4,
+        zoomControl: false
       });
 
     cartodb.createVis('user-places-map', 'https://rafuellos.cartodb.com/api/v2/viz/a0ff9b54-4bf1-11e5-a0ae-0e0c41326911/viz.json');
