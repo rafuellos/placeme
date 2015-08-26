@@ -22,7 +22,7 @@
                   <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
                     <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
                   <% end %>
-                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", user: place.id}, class: 'button-link', id: "delete-link" do%>
+                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: "delete-link" do%>
                     <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
                   <% end %>
                 </div>
