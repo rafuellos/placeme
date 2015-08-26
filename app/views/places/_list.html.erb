@@ -16,14 +16,14 @@
               
               <div class='action'>
                 <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                  <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
+                  <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
                 <% end %>
 
                 <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                  <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
+                  <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
                 <% end %>
                 <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?', toggle: "tooltip", placement: "right", title:"Delete"}, class: 'button-link' do%>
-                  <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
+                  <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
                 <% end %>
               </div>
             </content> 

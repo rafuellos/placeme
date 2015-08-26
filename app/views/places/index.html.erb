@@ -5,7 +5,7 @@
       <div class='welcome'><%= t '.welcome' %> <%= current_user.name %>!</div>
 
       <div class="buttons-menu-for-user">
-        <%= link_to new_user_place_path(current_user.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-add"} do%>
+        <%= link_to new_user_place_path(current_user.id), class: 'action-style', :data => {:toggle => "modal", :target => "#modal-add"} do%>
           <span class="fa-stack fa-3x", data-toggle="tooltip modal" data-placement="right" title="Add a place", data-taget='#modal-add'>
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-plus fa-stack-1x fa-reverse color"></i>
@@ -19,17 +19,6 @@
             <i class="fa fa-globe fa-stack-1x fa-reverse color"></i>
         <% end %>             
       </div>
-
-      <div class="buttons-menu-for-user">
-        <a href="#" id="testing-carto">
-          <span class="fa-stack fa-3x", data-toggle="tooltip" data-placement="right" title="Search places">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-globe fa-stack-1x fa-reverse color"></i>            
-          
-        </a>>
-      </div>
-
-
     
       <div class="btn-group closed white buttons-menu-for-user">
           

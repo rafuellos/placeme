@@ -121,6 +121,8 @@ div.col-xs-12.page-text {
 .action-style:hover, 
 .action-style:focus {
     color: #FFF;
+    text-decoration: none;
+    outline-style: none;
 }
 
 .search-gallery{
