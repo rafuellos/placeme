@@ -2,16 +2,16 @@
 <html>
 <head>
   <title>Placeme</title>
-  <%= favicon_link_tag %>
+    <%= favicon_link_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-
-  <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
-  <%= javascript_include_tag 'application' %> 
-  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
-  <%= javascript_include_tag "http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.11/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
+    <%= javascript_include_tag 'application' %> 
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false" %>
+    <%= javascript_include_tag "http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" %>
   
 </head>
 <body>

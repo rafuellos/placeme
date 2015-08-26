@@ -33,6 +33,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.owned_places.create(place_params)
+    binding.pry 
     skip_authorization
     respond_to do |format|
       if @place.save

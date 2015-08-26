@@ -296,3 +296,13 @@ button#set_location {
 .buttons-menu-for-user {
   margin: 15px 0;
 }
+
+.data-line {
+  margin: 20px 0;
+  padding-bottom: 10px;
+}
+
+.links-line {
+  margin-top: 20px;
+
+}
