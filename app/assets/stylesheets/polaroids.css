@@ -122,3 +122,12 @@ a.button-link {
 .col.col-xs-12.text-right.action.links-line.links-polaroid {
   margin-left: 90px;
 }
+
+
+.col-xs-10.gallery-index {
+  padding-left: 5px;
+}
+
+.gallery.col-xs-12.text-center {
+  margin-left: 15px;
+}

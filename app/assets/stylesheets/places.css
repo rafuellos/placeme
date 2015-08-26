@@ -190,7 +190,7 @@ body.loading .modal {
   border: 1px solid #FFF;
   border-radius: 4px;
   text-align: center;
-  margin-top: 12px;
+  margin-top: -15px;
   cursor: default; 
 }
   .apple_pagination a, .apple_pagination span {
