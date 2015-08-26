@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825110215) do
+ActiveRecord::Schema.define(version: 20150826192105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 20150825110215) do
     t.float    "latitude",           default: 0.0
     t.text     "address"
   end
+
+  create_table "places_users", id: false, force: :cascade do |t|
+    t.integer "shared_place_id_id"
+    t.integer "shared_user_id_id"
+  end
+
+  add_index "places_users", ["shared_place_id_id"], name: "index_places_users_on_shared_place_id_id", using: :btree
+  add_index "places_users", ["shared_user_id_id"], name: "index_places_users_on_shared_user_id_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
