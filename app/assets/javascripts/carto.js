@@ -29,15 +29,31 @@ $( document ).ready(function() {
       var url = sqlStatement1 + sqlStatement2;
       console.log(url);
 
-      var urlcomplete = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
+      var urlCreate = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
               + sqlStatement1 + sqlStatement2 + "&api_key=" + cartoKey;
       console.log(urlcomplete);
-      $.post(urlcomplete, function(data) {
+      $.post(urlCreate, function(data) {
         console.log(data);
     });
+  }); 
+
+  $('#delete-link').on('click', function(event){
+    event.preventDefault();
+    console.log('vamos a borrar');
+    var deleteLink = $('#delete-link').attr('data-user');
+    console.log("El place tenía el número " + deleteLink);
+
+    var sqlDelete = "DELETE FROM places_table WHERE owner_id = " + deleteLink;
+    console.log(sqlDelete);
+    var urlDelete = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
+            + sqlDelete + "&api_key=" + cartoKey;
+    sendPostToTable(urlcomplete);
   });
 
-  
+  function sendPostToTable (url){
+    $.post(url, function(data) {
+        console.log(data);
+  };
 
 
 });

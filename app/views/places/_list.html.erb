@@ -14,18 +14,18 @@
               <%= content_tag(:div, place.title, class: 'place-title') %> 
               <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
               
-              <div class='action'>
-                <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                  <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
-                <% end %>
+              <div class='col col-xs-12 text-right action links-line links-polaroid'>
+                  <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                    <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
+                  <% end %>
 
-                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                  <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
-                <% end %>
-                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?', toggle: "tooltip", placement: "right", title:"Delete"}, class: 'button-link' do%>
-                  <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
-                <% end %>
-              </div>
+                  <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                    <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
+                  <% end %>
+                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", user: place.id}, class: 'button-link', id: "delete-link" do%>
+                    <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
+                  <% end %>
+                </div>
             </content> 
           </div>
         <% end %>
