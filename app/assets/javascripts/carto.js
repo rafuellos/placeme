@@ -23,10 +23,8 @@ $( document ).ready(function() {
 
 
   $('body').on('submit', '.add-place-form', function(event){
-    //console.log( $( this ).serializeArray() );
-    //console.log(JSON.stringify($( this ).serializeArray()));
-    //var place = JSON.stringify($( this ).serializeArray());
-    //event.preventDefault();
+     console.log($('#form-tittle-place').val());
+     
     var place = JSON.stringify($( this ).serializeObject());
     //$('#modal-add').modal('toggle');
     console.log('DENTRO' + place);

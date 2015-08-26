@@ -23,11 +23,11 @@
       <div class="col col-xs-3 field">
         <div>
           <%= f.label :title, class: "color" %><br>
-          <%= f.text_field :title %><br>
+          <%= f.text_field :title, id: "form-tittle-place"%><br>
         </div>
         <div>
           <%= f.label :comments, class: "color" %><br>
-          <%= f.text_area :comments, class: "place-text-area " %><br>          
+          <%= f.text_area :comments, class: "place-text-area",id: "form-comments-place"  %><br>          
         </div>
         
       </div> 
@@ -42,17 +42,17 @@
         <div class="col col-xs-12 text-center data-location-place">
           <div>  
             <%= f.label :address %><br>
-            <%= f.text_area :address, id: 'address-place', class: "address-place place-text-area place-address" %>
+            <%= f.text_area :address, id: 'address-place', class: "address-place place-text-area place-address", id: "form-address-place" %>
           </div>
 
           <div>
             <%= f.label :longitude %><br>
-            <%= f.text_field :longitude, id: 'longitude-place', class: "coord-place" %>
+            <%= f.text_field :longitude, id: 'longitude-place', class: "coord-place", id: "form-longitude-place" %>
           </div>
 
           <div>
               <%= f.label :latitude %><br>
-            <%= f.text_field :latitude, id: 'latitude-place', class: "coord-place" %>
+            <%= f.text_field :latitude, id: 'latitude-place', class: "coord-place",id: "form-tatitude-place" %>
           </div>
           
           <div>
