@@ -31,7 +31,7 @@ $( document ).ready(function() {
 
       var urlCreate = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
               + sqlStatement1 + sqlStatement2 + "&api_key=" + cartoKey;
-      console.log(urlcomplete);
+      console.log(urlCreate);
       $.post(urlCreate, function(data) {
         console.log(data);
     });
@@ -40,20 +40,23 @@ $( document ).ready(function() {
   $('#delete-link').on('click', function(event){
     event.preventDefault();
     console.log('vamos a borrar');
-    var deleteLink = $('#delete-link').attr('data-user');
-    console.log("El place tenía el número " + deleteLink);
+    var deleteLinkTitle = $('#delete-link').attr('data-placetitle');
+    var deleteLinkComment = $('#delete-link').attr('data-comments');
 
-    var sqlDelete = "DELETE FROM places_table WHERE owner_id = " + deleteLink;
+    console.log("El place" + deleteLinkTitle + " con comment " + deleteLinkComment);
+
+    var sqlDelete = "DELETE FROM places_table WHERE title = '" + deleteLinkTitle +"' AND comments = '" + deleteLinkComment + "'";
     console.log(sqlDelete);
     var urlDelete = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
             + sqlDelete + "&api_key=" + cartoKey;
-    sendPostToTable(urlcomplete);
+    sendPostToTable(urlDelete);
   });
 
   function sendPostToTable (url){
     $.post(url, function(data) {
         console.log(data);
-  };
+    });
+  }  
 
 
 });
