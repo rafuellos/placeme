@@ -42,6 +42,13 @@
 
 <div class="col-xs-10">
   <div class="container-fluid clearfix search-gallery">
+    <div class="col-sx-12">
+      <%= render(
+        partial: 'places/list',
+        locals: { places: @places }
+      ) %>
+      
+    </div>
       <div class="col-xs-12 search-bar text-center">
           <%= form_for_filterrific @filterrific do |f| %>
       
@@ -88,14 +95,6 @@
       </div>
 
     <% end %>
-      
-    <div class="col-sx-12">
-      <%= render(
-        partial: 'places/list',
-        locals: { places: @places }
-      ) %>
-      
-    </div>
 
 
     <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

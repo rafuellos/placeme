@@ -1,10 +1,6 @@
 
 <div id="filterrific_results">
-  
   <div>
-    
-    <div class="col-xs-12 page-text"><%= will_paginate places, class: 'apple_pagination' %></div> 
-
     <div class="gallery col-xs-12 text-center">
        <% @places.each do |place| %>
         <%= link_to user_place_path(current_user.id, place.id), class: 'action-style button-link' do%>
@@ -31,6 +27,10 @@
         <% end %>
         
       <% end %>
-    </div>    
+    </div>  
+
+    <div class="col-xs-12 page-text"><%= will_paginate places, class: 'apple_pagination' %>
+    </div> 
+      
   </div>
 </div>

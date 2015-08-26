@@ -15,6 +15,9 @@ $( document ).ready(function() {
     timeout: 5000,
     maximumAge: 0
   };
+  $editingLabel = $('#editing-label');
+  $modalAdd = $('#modal-add')
+  $navigateButton = $('#navigateButton');
 
   if ("geolocation" in navigator) {
       console.log('Everything is ok with the geolocation');
@@ -24,7 +27,7 @@ $( document ).ready(function() {
   }
 
 
-  if ($('#navigateButton').length > 0 || $('#modal-add').length > 0){  
+  if ($navigateButton.length > 0 || $modalAdd.length > 0){  
       getLocation();
   }
   
@@ -48,6 +51,8 @@ $( document ).ready(function() {
     console.log("Got it!");
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+    console.log(lat);
+    console.log(lon);
     $('#latitude-place').val(lat);
     $('#longitude-place').val(lon);
     if ($('#navigateButton').length > 0){
@@ -63,15 +68,26 @@ $( document ).ready(function() {
 
 
 
-  $('#modal-add').on('loaded.bs.modal', function(){
-    console.log('showing the modal')    
+  $modalAdd.on('loaded.bs.modal', function(){
+    console.log('showing the modal with the map') 
+    navigator.geolocation.getCurrentPosition(setLocation, onError, options);   
     initMap();    
   });
 
-  $('.edit-action').on('click', function(){
-    console.log('showing the map')    
-    initMap();    
-  });
+
+  if ($editingLabel.length > 0){
+    console.log('showing the map edition') 
+    navigator.geolocation.getCurrentPosition(function(position){
+      console.log("Recuperando coordenadas");
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+      console.log("ahora" +lat);
+      console.log("ahora" + lon);
+      $('#latitude-place').val(lat);
+      $('#longitude-place').val(lon);
+      initMap(); 
+    }, onError, options);        
+  };
 
 
 
@@ -90,7 +106,7 @@ $( document ).ready(function() {
       placeMarker(event.latLng);
     });
 
-    $('#modal-add').on('click', '#set_location', function(event){
+    $modalAdd.on('click', '#set_location', function(event){
       navigator.geolocation.getCurrentPosition(function (position) {
         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.setCenter(initialLocation);
