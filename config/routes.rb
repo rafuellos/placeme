@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
+  get '/user/:user_id/places/map', to: 'places#map', as: :places_map
  
 
 

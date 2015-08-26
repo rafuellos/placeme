@@ -17,6 +17,10 @@ class PlacesController < ApplicationController
     
   end
 
+  def map
+    skip_authorization
+  end  
+
   def show
     @place = Place.find(params[:id])
     authorize @place
