@@ -62,6 +62,9 @@ $( document ).ready(function() {
       setMapCenterLocation();
   };
 
+  var centerLon;
+  var centerLat;
+
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -72,8 +75,8 @@ $( document ).ready(function() {
     console.log('Getting location...'); 
     navigator.geolocation.getCurrentPosition(function(position){
       console.log("Getting map center location!");
-      var centerLat = position.coords.latitude;
-      var centerLon = position.coords.longitude;
+      centerLat = position.coords.latitude;
+      centerLon = position.coords.longitude;
       paintCartoMap(centerLat, centerLon);  
     }, onError, options);
   };
@@ -81,11 +84,12 @@ $( document ).ready(function() {
   function paintCartoMap(lat, lon) {
     //id = user-places-map
     console.log("pintando el mapa de Cartodb")
+    console.log(centerLon)
     var map = new L.Map('user-places-map', {
-        center: [lon,lat],
-        zoom: 4,
+        center: [centerLon, centerLat],
+        zoom: 6,
         zoomControl: false
-        
+
       });
 
     cartodb.createVis('user-places-map', 'https://rafuellos.cartodb.com/api/v2/viz/a0ff9b54-4bf1-11e5-a0ae-0e0c41326911/viz.json');
