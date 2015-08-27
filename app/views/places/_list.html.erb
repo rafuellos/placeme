@@ -14,13 +14,16 @@
                   <%= link_to "#", class: 'button-link', data: {toggle: "popover", placement: "left", title:"Share place: " + place.title} do%>
                     <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
                   <% end %>
-
-                  <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                    <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
-                  <% end %>
-                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: 'delete-link' do%>
-                    <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
-                  <% end %>
+                  <% if (place.owner_id == current_user.id) %>
+                    <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                      <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
+                    <% end %>
+                    <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: 'delete-link' do%>
+                      <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
+                    <% end %>
+                  <% else %>  
+                    <p>Shared by: <%= place.owner_id %></p> 
+                  <% end %>  
                 </div>
             </content> 
           </div>
