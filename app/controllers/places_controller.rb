@@ -3,8 +3,10 @@ class PlacesController < ApplicationController
   def index
     #@users = User.order(:name) - User.find(:id, current_user.id);
     @users = User.where.not(id: current_user.id)
+    total_places = current_user.owned_places.push(current_user.shared_places)
     @filterrific = initialize_filterrific(
-      policy_scope(Place),
+      #policy_scope(Place),
+      total_places,
       params[:filterrific],
       :select_options => {
         sorted_by: Place.options_for_sorted_by,
@@ -12,7 +14,8 @@ class PlacesController < ApplicationController
       }
     ) or return
     @places = @filterrific.find.page(params[:page])
-
+    binding.pry
+    #@places += current_user.shared_places
     respond_to do |format|
       format.html
       format.js
