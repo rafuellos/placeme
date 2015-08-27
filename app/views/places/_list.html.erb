@@ -11,14 +11,14 @@
               <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
               
               <div class='col col-xs-12 text-right action links-line links-polaroid'>
-                  <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+                  <%= link_to "#", class: 'button-link', data: {toggle: "popover", placement: "left", title:"Share place: " + place.title} do%>
                     <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
                   <% end %>
 
                   <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
                     <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
                   <% end %>
-                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: "delete-link" do%>
+                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: 'delete-link' do%>
                     <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
                   <% end %>
                 </div>
@@ -33,4 +33,23 @@
     </div> 
       
   </div>
+
+
+  <div id="popover-content" class="hide">
+    <form class="form-inline" role="form">
+      <div class="form-to-apply">
+        <%= form_tag "/places/share", class: "share-place-form"  do %>
+          <%= label_tag :user %><br />
+          <%= select(:user, {:include_blank => "Select"}, options_for_select(@users.collect{|user| [user.name,user.id]})) %>
+          <div><%= submit_tag 'Share', class: "btn btn-primary" %></div>
+        <% end -%>
+      </div>
+    </form>
+  </div>
+
 </div>
+
+
+
+
+

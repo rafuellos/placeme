@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
 
   def index
+    @users = User.order(:name);
     @filterrific = initialize_filterrific(
       policy_scope(Place),
       params[:filterrific],
@@ -55,14 +56,22 @@ class PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
+    #binding.pry
     raise "not authorized" unless PlacePolicy.new(current_user, @place).update?
     authorize @place
     #if @place.update(post_params)
-    if @place.update_attributes(permitted_attributes(@place))
-      redirect_to user_places_path(current_user.id)
+
+    if @place.update_attributes place_params
+      redirect_to user_places_path(current_user)
     else
-      render :edit
+      @errors = @concert.errors.full_messages
+      render 'edit'
     end
+    # if @place.update_attributes(permitted_attributes(@place))
+    #   redirect_to user_places_path(current_user.id)
+    # else
+    #   render :edit
+    # end
   end
 
   def destroy
