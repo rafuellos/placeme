@@ -24,8 +24,29 @@
                 </div>
             </content> 
           </div>
+
+
+
         <% end %>
         
+        <div id="popover-content" class="hide"> 
+            <div class="form-to-apply">
+              <%= form_tag("/places/share", class: "share-place-form") do %>
+                <div>
+                               
+                  <%= hidden_field_tag :place_id, place.id %>
+                </div>
+                <div> 
+                  <%= select(:user, :user_id, @users.collect{|user| [ user.name, user.id ] }, { include_blank: false }) %>
+                </div>
+                <div>
+                  <%= submit_tag 'Share', class: "btn btn-primary" %>
+                </div>
+              <% end -%>
+            </div>
+        </div>
+
+
       <% end %>
     </div>  
 
@@ -35,17 +56,7 @@
   </div>
 
 
-  <div id="popover-content" class="hide">
-    <form class="form-inline" role="form">
-      <div class="form-to-apply">
-        <%= form_tag "/places/share", class: "share-place-form"  do %>
-          <%= label_tag :user %><br />
-          <%= select(:user, {:include_blank => "Select"}, options_for_select(@users.collect{|user| [user.name,user.id]})) %>
-          <div><%= submit_tag 'Share', class: "btn btn-primary" %></div>
-        <% end -%>
-      </div>
-    </form>
-  </div>
+
 
 </div>
 

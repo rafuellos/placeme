@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 
   def index
-    @users = User.order(:name);
+    @users = User.order(:name) - User.find(:id, current_user.id);
     @filterrific = initialize_filterrific(
       policy_scope(Place),
       params[:filterrific],
@@ -20,6 +20,14 @@ class PlacesController < ApplicationController
 
   def map
     skip_authorization
+  end
+
+  def share
+    binding.pry
+    @user = User.find(params[:user])
+    @place = Place.find(params[:id])
+    skip_authorization
+    format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully shared with.' }
   end  
 
   def show
@@ -56,10 +64,10 @@ class PlacesController < ApplicationController
 
   def update
     @place = Place.find(params[:id])
-    #binding.pry
+
     raise "not authorized" unless PlacePolicy.new(current_user, @place).update?
     authorize @place
-    #if @place.update(post_params)
+
 
     if @place.update_attributes place_params
       redirect_to user_places_path(current_user)
@@ -67,11 +75,7 @@ class PlacesController < ApplicationController
       @errors = @concert.errors.full_messages
       render 'edit'
     end
-    # if @place.update_attributes(permitted_attributes(@place))
-    #   redirect_to user_places_path(current_user.id)
-    # else
-    #   render :edit
-    # end
+
   end
 
   def destroy
