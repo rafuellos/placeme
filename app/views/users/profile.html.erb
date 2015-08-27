@@ -31,6 +31,11 @@
       <div>
         <%= link_to 'Go to your Places', user_places_path(current_user.id), class: "btn btn-default create-place navigate" %>
       </div>
+      <div>
+        <%= link_to user_path(current_user.id), method: :delete, class: "btn btn-danger delete-account-button", :data => {confirm: "Are_you_sure?" } do%>
+          <i class="fa fa-user-times fa-2x place-button delete-account"> Delete your account</i>
+        <% end %>
+      </div>
       
     </div>
   </div>

@@ -2,12 +2,12 @@ class PlacesController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
-    total_places = current_user.owned_places.merge(current_user.shared_places)
+    @total_places = current_user.shared_places.push(current_user.owned_places)
 
     binding.pry
     @filterrific = initialize_filterrific(
       policy_scope(Place),
-      #total_places,
+      #@total_places,
       params[:filterrific],
       :select_options => {
         sorted_by: Place.options_for_sorted_by,
@@ -37,7 +37,7 @@ class PlacesController < ApplicationController
   def share
     @user = User.find(params[:user][:user_id])
     @place = Place.find(params[:place][:id])
-    binding.pry
+    #binding.pry
     if (@user.owned_places(params[:place][:id].to_i).any?) || (@user.shared_places(params[:place][:id].to_i).any?)
       skip_authorization
       respond_to do |format|

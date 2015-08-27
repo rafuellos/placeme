@@ -11,6 +11,8 @@ img.profile-logo {
   height: 18em;
 }
 
+
+
 a.btn.btn-danger.profile {
   margin-top: 20px;
   margin-left: 220px;
@@ -23,4 +25,13 @@ a.btn.btn-danger.profile {
 a.btn.btn-default.create-place.navigate {
   border: 1px solid white;
   margin-top: 20px;
+}
+
+i.fa.fa-user-times.fa-2x.place-button.delete-account {
+  font-size: small;
+}
+
+a.btn.btn-danger.delete-account-button {
+  margin: 25px;
+  border: 1px solid white;
 }
