@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_places, class_name: 'Place', foreign_key: :owner_id
-  has_and_belongs_to_many :shared_places, class_name: 'Place', :join_table => "places_user", foreign_key: :shared_id 
+  has_and_belongs_to_many :shared_places, class_name: 'Place', :join_table => "places_users", :association_foreign_key => "shared_place_id", foreign_key: "shared_user_id"
 
   validates :email, presence: true
   validates :locale_value, presence: true

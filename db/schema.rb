@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20150826192105) do
   end
 
   create_table "places_users", id: false, force: :cascade do |t|
-    t.integer "shared_place_id_id"
-    t.integer "shared_user_id_id"
+    t.integer "shared_place_id"
+    t.integer "shared_user_id"
   end
 
-  add_index "places_users", ["shared_place_id_id"], name: "index_places_users_on_shared_place_id_id", using: :btree
-  add_index "places_users", ["shared_user_id_id"], name: "index_places_users_on_shared_user_id_id", using: :btree
+  add_index "places_users", ["shared_place_id"], name: "index_places_users_on_shared_place_id", using: :btree
+  add_index "places_users", ["shared_user_id"], name: "index_places_users_on_shared_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
