@@ -1,0 +1,27 @@
+
+
+.sharing-bck {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #00999;
+  position: absolute;
+}
+
+.sharing-form {
+  background-color: #FFF;
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  top: 250px;
+  border: 2px solid #000;
+
+}
+
+.prueba {
+  background-color: red;
+  height: 100px;
+  width: 200px;
+  z-index: 100;
+}

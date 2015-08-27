@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
   root to: 'users#profile'
   post 'places/share', to: 'places#share'
+  get 'place/:id/sharing', to: 'places#sharing', as: 'sharing'
 
   match '/signup',    to: 'users#new',    via: 'get'
 

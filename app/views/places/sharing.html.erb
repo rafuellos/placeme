@@ -1,0 +1,24 @@
+<div>
+  <div class="sharing-bck"></div>
+
+  <div class="sharing-form">
+    
+    <div>
+      <%= form_tag("/places/share", class: "share-place-form") do %>
+        <div id>                        
+          <%= text_field :place, :id %>
+        </div>
+        <div> 
+          <%= select(:user, :user_id, @users.collect{|user| [ user.name, user.id ] }, { include_blank: false }) %>
+        </div>
+        <div>
+          <%= submit_tag "Share", class: "btn btn-default create-place" %>
+        </div>
+      <% end -%>
+    </div>
+   
+  </div>
+
+  <div class="prueba"></div>
+  
+</div>

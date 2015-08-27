@@ -82,8 +82,4 @@ class Place < ActiveRecord::Base
     created_at.to_date.to_s(:long)
   end
 
-  def self.all_except(user)
-    where.not(id: user.id)
-  end
-
 end

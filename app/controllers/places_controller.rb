@@ -2,8 +2,9 @@ class PlacesController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
-    total_places = current_user.owned_places + current_user.shared_places
-    binding.pry
+    total_places = current_user.owned_places.merge(current_user.shared_places)
+
+    #binding.pry
     @filterrific = initialize_filterrific(
       policy_scope(Place),
       #total_places,
@@ -26,15 +27,27 @@ class PlacesController < ApplicationController
     skip_authorization
   end
 
+  def sharing
+    @place = Place.find(params[:id])
+    @users = User.where.not(id: current_user.id)
+    authorize @place
+    #binding.pry
+  end
+
   def share
     @user = User.find(params[:user][:user_id])
     @place = Place.find(params[:place_id])
-    @user.shared_places.push(@place)
-    binding.pry
-    skip_authorization
-    respond_to do |format|
-      if @place
-        format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully shared with: ' + @user.name  }
+    if (@user.owned_places.find(params[:place_id])) || (@user.shared_places.find(params[:place_id]))
+      skip_authorization
+      respond_to do |format|
+          format.html { redirect_to user_places_path(current_user), notice: @user.name + 'already has ' + @place.title}
+      end
+    else
+      @user.shared_places.push(@place)
+      #binding.pry
+      skip_authorization
+      respond_to do |format|
+          format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully shared with: ' + @user.name}
       end
     end
   end  
@@ -89,8 +102,11 @@ class PlacesController < ApplicationController
 
   def destroy
     @place = Place.find(params[:id])
-    authorize @place
-    @place.destroy
+    @place_to_destroy = current_user.owned_places.find(@place.id)
+    binding.pry
+    
+    authorize @place_to_destroy
+    @place_to_destroy.destroy
     respond_to do |format|
       format.html {redirect_to user_places_url(current_user.id), notice: 'Place was successfully destroyed.' }
     end

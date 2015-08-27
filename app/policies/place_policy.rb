@@ -21,6 +21,11 @@ class PlacePolicy < ApplicationPolicy
     user.id == record.owner_id
   end
 
+  def sharing?
+    user.id == record.owner_id
+  end
+
+
   def permitted_attributes
     if (user.id == record.owner_id)
       [:comments, :photo]

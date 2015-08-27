@@ -14,7 +14,11 @@ $( document ).ready(function() {
   $("[data-toggle=popover]").popover({
     html: true, 
     content: function() {
-          return $('#popover-content').html();
+          //console.log($('#popover-number').val());
+          //$('#popover-number').val();
+          
+          //$('#popover-number').html(number);
+          return $('#popover-content').html();          
     }
   });
 
