@@ -1,6 +1,6 @@
 class Place < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id
-  has_and_belongs_to_many :shared_users, class_name: 'User', :join_table => "places_users", :association_foreign_key => "shared_user_id", :foreign_key => "place_id"
+  has_and_belongs_to_many :shared_users, class_name: 'User', :join_table => "places_users", :association_foreign_key => "shared_user_id", :foreign_key => "shared_place_id"
   
   validates :owner,  presence: true
   validates :comments, :title, presence: true

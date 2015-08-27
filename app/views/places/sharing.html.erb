@@ -5,20 +5,23 @@
     
     <div>
       <%= form_tag("/places/share", class: "share-place-form") do %>
-        <div id>                        
-          <%= text_field :place, :id %>
+        <div class="title-share">
+          You are going to share "<%= @place.title %>" with:
         </div>
-        <div> 
+
+        <div>                        
+          <%= hidden_field :place, :id %>
+        </div>
+        <div class="select_share"> 
           <%= select(:user, :user_id, @users.collect{|user| [ user.name, user.id ] }, { include_blank: false }) %>
         </div>
-        <div>
-          <%= submit_tag "Share", class: "btn btn-default create-place" %>
+        <div class="button-share">
+          <%= submit_tag "Share", class: "btn btn-default create-place share-button" %>
         </div>
       <% end -%>
     </div>
    
   </div>
 
-  <div class="prueba"></div>
   
 </div>
