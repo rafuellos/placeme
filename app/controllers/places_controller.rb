@@ -1,7 +1,8 @@
 class PlacesController < ApplicationController
 
   def index
-    @users = User.order(:name) - User.find(:id, current_user.id);
+    #@users = User.order(:name) - User.find(:id, current_user.id);
+    @users = User.where.not(id: current_user.id)
     @filterrific = initialize_filterrific(
       policy_scope(Place),
       params[:filterrific],
@@ -11,6 +12,7 @@ class PlacesController < ApplicationController
       }
     ) or return
     @places = @filterrific.find.page(params[:page])
+
     respond_to do |format|
       format.html
       format.js
@@ -23,11 +25,16 @@ class PlacesController < ApplicationController
   end
 
   def share
+    @user = User.find(params[:user][:user_id])
+    @place = Place.find(params[:place_id])
+    @user.shared_places.push(@place)
     binding.pry
-    @user = User.find(params[:user])
-    @place = Place.find(params[:id])
     skip_authorization
-    format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully shared with.' }
+    respond_to do |format|
+      if @place
+        format.html { redirect_to user_places_path(current_user), notice: 'Place was successfully shared with: ' + @user.name  }
+      end
+    end
   end  
 
   def show
