@@ -25,5 +25,7 @@ module Placeme
     I18n.available_locales = [:en, :es]
     config.time_zone = 'Madrid' # set default time zone to "Madrid" 
     config.i18n.default_locale = :en # set default locale to English
+
+    CartoDB::Init.start YAML.load_file(Rails.root.join('config/cartodb_config.yml'))
   end
 end

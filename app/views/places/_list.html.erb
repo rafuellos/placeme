@@ -19,10 +19,10 @@
                   <i class="fa fa-share-alt fa-lg place-button color-secondary"></i>
                 <% end %>
 
-                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'action-style button-link', :data => {:toggle => "modal", :target => "#modal-add"} do%>
+                <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
                   <i class="fa fa-pencil fa-lg place-button color-secondary"></i>
                 <% end %>
-                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?'}, class: 'button-link' do%>
+                <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { confirm: 'Are you sure?', toggle: "tooltip", placement: "right", title:"Delete"}, class: 'button-link' do%>
                   <i class="fa fa-trash-o fa-lg place-button color-secondary"></i>
                 <% end %>
               </div>

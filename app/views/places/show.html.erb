@@ -48,12 +48,12 @@
    </div> 
   
    <div class="col col-xs-4 field text center">
-      <a href="https://www.google.com/maps/dir/<%= current_user.latitude %>,<%= current_user.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" target="_blank" >
+      <a id="location-map" href="#" target="_blank" >
         <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @place.latitude %>,<%= @place.longitude %>&zoom=15&size=370x300&markers=color:blue|label:P|<%= @place.latitude %>,<%= @place.longitude %>">
       </a>
 
      <div class="add-actions text-center">
-        <a href="https://www.google.com/maps/dir/<%= current_user.latitude %>,<%= current_user.longitude %>/<%= @place.latitude %>,<%= @place.longitude %>" class="btn btn-default create-place navigate" target="_blank" >Navigate</a>
+        <a id="navigateButton" href="#" class="btn btn-default create-place navigate" target="_blank"  latitude = "<%= @place.latitude %>" longitude = "<%= @place.longitude %>">Navigate</a>
      </div>
    </div>   
 
