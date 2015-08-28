@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     def destroy
       @user = User.find params[:id]
       @user.destroy
-      redirect_to destroy_user_session_path
+      skip_authorization
+      redirect_to profile_path
     end
 
       

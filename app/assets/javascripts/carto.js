@@ -50,11 +50,27 @@ $( document ).ready(function() {
     sendPostToTable(urlDelete);
   });
 
+   
+  
   function sendPostToTable (url){
     $.post(url, function(data) {
         console.log(data);
     });
-  }  
+  } 
+
+
+  $deleteAccount = $('.delete-account-button')
+  $deleteAccount.on('click', function(event){
+    event.preventDefault();
+    console.log('vamos a borrar todos los datos del usuario');
+    var deleteId = $deleteAccount.attr('data-user');
+
+    var sqlDeleteAll = "DELETE FROM places_table WHERE owner_id = " + deleteId;
+    console.log(sqlDeleteAll);
+    var urlDelete = "https://rafuellos.cartodb.com/api/v2/sql?q=" 
+            + sqlDeleteAll + "&api_key=" + cartoKey;
+    //sendPostToTable(urlDelete);
+  });
 
 
 //Inserting the map in the visualization for places when pressed the button with the world icon

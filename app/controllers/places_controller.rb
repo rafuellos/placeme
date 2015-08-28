@@ -2,9 +2,8 @@ class PlacesController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
-    @total_places = current_user.shared_places.push(current_user.owned_places)
-
-    binding.pry
+    @total_places = current_user.shared_places + current_user.owned_places
+    #Here is the problem for showing the complete set of places
     @filterrific = initialize_filterrific(
       policy_scope(Place),
       #@total_places,
@@ -15,6 +14,7 @@ class PlacesController < ApplicationController
       }
     ) or return
     @places = @filterrific.find.page(params[:page])
+    #binding.pry
     
     respond_to do |format|
       format.html
