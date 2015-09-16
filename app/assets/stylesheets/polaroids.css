@@ -97,13 +97,37 @@
 
 }
 
+.date.place-date {
+  margin-top: 5px;
+}
+
 .action {
   float: right;
-  margin-top: -15px;
+  margin-top: -10px;
+  display: inline-flex;
+  
 }
 
 .place-button {
   margin-left: 7px; 
   margin-top: -15px;
 
+}
+
+a.button-link {
+  display: block;
+  font-size: 10px;
+}
+
+.col.col-xs-12.text-right.action.links-line.links-polaroid {
+  margin-left: 90px;
+}
+
+
+.col-xs-10.gallery-index {
+  padding-left: 5px;
+}
+
+.gallery.col-xs-12.text-center {
+  margin-left: 15px;
 }

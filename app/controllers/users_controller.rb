@@ -7,5 +7,7 @@ class UsersController < ApplicationController
       skip_authorization  
       render 'users/profile'
     end
+
+
       
 end

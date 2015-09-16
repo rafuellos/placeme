@@ -34,11 +34,12 @@ class Place < ActiveRecord::Base
     # configure number of OR conditions for provision
     # of interpolation arguments. Adjust this if you
     # change the number of OR conditions.
-    num_or_conditions = 1
+    num_or_conditions = 2
     where(
       terms.map {
         or_clauses = [
-          "LOWER(places.title) LIKE ?"
+          "LOWER(places.title) LIKE ?", 
+          "LOWER(places.comments) LIKE ?"
         ].join(' OR ')
         "(#{ or_clauses })"
       }.join(' AND '),

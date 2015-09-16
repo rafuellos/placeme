@@ -14,3 +14,5 @@ es:
       comments: "Comentario"
       owner_id: "Id del propietario"
       date: "Fecha"
+    map:
+      welcome: "Este es el mapa de tus Places,"

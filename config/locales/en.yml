@@ -14,3 +14,5 @@ en:
       comments: "Comment"
       owner_id: "Owner Id"
       date: "Date"
+    map:
+      welcome: "This is the map of your Places,"

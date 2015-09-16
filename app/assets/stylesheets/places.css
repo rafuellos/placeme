@@ -84,7 +84,7 @@ div.container-fluid {
 .container-fluid.menu-for-user.text-center {
   padding-left: 5px;
   margin-left: 5px;
-  margin-top: 55px;
+  margin-top: 100px;
 
 }
 
@@ -121,6 +121,8 @@ div.col-xs-12.page-text {
 .action-style:hover, 
 .action-style:focus {
     color: #FFF;
+    text-decoration: none;
+    outline-style: none;
 }
 
 .search-gallery{
@@ -188,7 +190,7 @@ body.loading .modal {
   border: 1px solid #FFF;
   border-radius: 4px;
   text-align: center;
-  margin-top: 12px;
+  margin-top: -15px;
   cursor: default; 
 }
   .apple_pagination a, .apple_pagination span {
@@ -295,4 +297,14 @@ button#set_location {
 
 .buttons-menu-for-user {
   margin: 15px 0;
+}
+
+.data-line {
+  margin: 20px 0;
+  padding-bottom: 10px;
+}
+
+.links-line {
+  margin-top: 20px;
+
 }

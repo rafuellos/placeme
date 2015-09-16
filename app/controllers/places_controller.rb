@@ -17,6 +17,10 @@ class PlacesController < ApplicationController
     
   end
 
+  def map
+    skip_authorization
+  end  
+
   def show
     @place = Place.find(params[:id])
     authorize @place
@@ -33,6 +37,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.owned_places.create(place_params)
+    #binding.pry 
     skip_authorization
     respond_to do |format|
       if @place.save
