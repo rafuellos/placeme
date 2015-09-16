@@ -5,7 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_places, class_name: 'Place', foreign_key: :owner_id
-  validates :locale_value,  presence: true
+  has_and_belongs_to_many :shared_places, class_name: 'Place', :join_table => "places_users", :association_foreign_key => "shared_place_id", foreign_key: "shared_user_id"
+
+  validates :email, presence: true
+  validates :locale_value, presence: true
+
+  def all_places
+      (self.owned_places + self.shared_places).uniq
+  end
 
 
   def self.options_for_select

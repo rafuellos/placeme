@@ -11,21 +11,45 @@
               <%= content_tag(:div, place.created_at.strftime('%d-%b-%y'), class: 'date place-date')%>
               
               <div class='col col-xs-12 text-right action links-line links-polaroid'>
-                  <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                    <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
-                  <% end %>
-
-                  <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
-                    <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
-                  <% end %>
-                  <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: "delete-link" do%>
-                    <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
-                  <% end %>
+                  <% if (place.owner_id == current_user.id) %>
+                    <%= link_to sharing_path(place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"share"} do%>
+                      <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
+                    <% end %>
+                    <%= link_to edit_user_place_path(current_user.id, place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Edit"} do%>
+                      <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
+                    <% end %>
+                    <%= link_to user_place_path(current_user.id, place.id), method: :delete, data: { toggle: "tooltip", placement: "right", title:"Delete", placetitle: place.title, comments: place.comments}, class: 'button-link', id: 'delete-link' do%>
+                      <i class="fa fa-trash-o fa-2x place-button color-secondary"></i>
+                    <% end %>
+                  <% else %>  
+                    <p class="color-secondary">Shared by: <%= place.owner_id %></p> 
+                  <% end %>  
                 </div>
             </content> 
           </div>
+
+
+
         <% end %>
         
+        
+        <div id="popover-content" class="hide"> 
+            <div class="form-to-apply">
+              <%= form_tag("/places/share", class: "share-place-form") do %>
+                <div id="popover-number">                        
+                  <%= hidden_field :place, place.id %>
+                </div>
+                <div> 
+                  <%= select(:user, :user_id, @users.collect{|user| [ user.name, user.id ] }, { include_blank: false }) %>
+                </div>
+                <div>
+                  <%= submit_tag "Share", class: "btn btn-primary" %>
+                </div>
+              <% end -%>
+            </div>
+        </div>
+
+
       <% end %>
     </div>  
 
@@ -33,4 +57,13 @@
     </div> 
       
   </div>
+
+
+
+
 </div>
+
+
+
+
+

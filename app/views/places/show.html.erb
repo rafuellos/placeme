@@ -25,11 +25,11 @@
       Created: <%= @place.created_at.strftime('%d-%b-%y at %H:%m') %>
     </div>
     <div class='col col-xs-12 action links-line'>
-      <%= link_to profile_path, class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+      <%= link_to sharing_path(@place.id), class: 'button-link', data: {toggle: "tooltip", placement: "right", title:"share"} do%>
         <i class="fa fa-share-alt fa-2x place-button color-secondary"></i>
       <% end %>
 
-      <%= link_to edit_user_place_path(current_user.id, @place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Share"} do%>
+      <%= link_to edit_user_place_path(current_user.id, @place.id), class: 'button-link edit-action', data: {toggle: "tooltip", placement: "right", title:"Edit"} do%>
         <i class="fa fa-pencil fa-2x place-button color-secondary"></i>
       <% end %>
       <%= link_to user_place_path(current_user.id, @place.id), method: :delete, data: {toggle: "tooltip", placement: "right", title:"Delete", placetitle: @place.title, comments: @place.comments}, class: 'button-link', id: "delete-link" do%>

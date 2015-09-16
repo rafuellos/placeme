@@ -9,5 +9,12 @@ class UsersController < ApplicationController
     end
 
 
+    def destroy
+      @user = User.find params[:id]
+      @user.destroy
+      skip_authorization
+      redirect_to profile_path
+    end
+
       
 end

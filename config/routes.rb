@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'users/set_coordinates', to: 'users#set_coordinates'
   get 'profile', to: 'users#profile'
   root to: 'users#profile'
+  post 'places/share', to: 'places#share'
+  get 'place/:id/sharing', to: 'places#sharing', as: 'sharing'
 
   match '/signup',    to: 'users#new',    via: 'get'
 

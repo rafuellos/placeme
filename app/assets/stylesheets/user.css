@@ -20,9 +20,35 @@
   margin-right: 15px;
 }
 
-.row.sigin-in-page {
+.row.sign-in-page {
   margin-right: 0;
-  background-color: #009999 
+  background-color: #009999;
+  height: 100vh;
+}
+
+.col.col-xs-4.text-center.logo-at-sign-in {
+  top: 100px;
+  left: 26%;
+}
+
+.col.col-xs-4.button-sign-in  {
+  top: 320px;
+  left: 125px;
+}
+
+button#overlaylaunch-signIn {
+  padding-top: 20px;
+}
+
+p.sign-in-text {
+
+  font-family: 'Reenie Beanie', cursive;
+  margin-bottom: 0;
+}
+
+img.logo-style.logo-sign-in {
+  height: 200px;
+  width: auto;
 }
 
 .sign-in-form{
