@@ -1,0 +1,77 @@
+
+<%= form_for ([current_user, @place]), html: {class: "add-place-form"} do |f| %>
+  <% if @place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% @place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col col-xs-4 field">
+        <%= f.label :photo, 'Add a new photo', class: 'color' %><br>
+        <%= f.file_field :photo, :id => 'pictureInput' %>
+        <div id="target" class="photo-frame"></div>
+      </div>
+
+      <div class="col col-xs-3 field">
+        <div>
+          <%= f.label :title, class: "color" %><br>
+          <%= f.text_field :title, id: "form-tittle-place"%><br>
+        </div>
+        <div>
+          <%= f.label :comments, class: "color" %><br>
+          <%= f.text_area :comments, class: "place-text-area",id: "form-comments-place"  %><br>          
+        </div>
+        <div id="form-user-place" class="white" value= <%= current_user.id %>></div>
+        
+        
+      </div> 
+ 
+      <div class="col col-xs-5 field text-center">
+        <%= f.label :map, 'Pick the location in the map', class: 'color' %><br>
+        <div id="map_canvas" value="hello"></div>
+               
+      </div>
+      <div class="im-centered">
+        
+        <div class="col col-xs-12 text-center data-location-place">
+          <div>  
+            <%= f.label :address %><br>
+            <%= f.text_area :address, id: 'address-place', class: "address-place place-text-area place-address" %>
+          </div>
+
+          <div>
+            <%= f.label :longitude %><br>
+            <%= f.text_field :longitude, id: 'longitude-place', class: "coord-place" %>
+          </div>
+
+          <div>
+              <%= f.label :latitude %><br>
+            <%= f.text_field :latitude, id: 'latitude-place', class: "coord-place"%>
+          </div>
+          
+          <div>
+            <%= button_tag 'Current location', type: 'button', class: "btn btn-default create-place", :id => "set_location" %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col col-xs-12 text-center">
+        
+        <div class="add-actions">
+          <%= f.submit "Save your Place", class: "btn btn-default create-place", id: "create-place" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

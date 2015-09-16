@@ -1,0 +1,18 @@
+es:
+  time:
+    formats:
+      date_place: "%d de %B, %Y"
+  places:
+    index:
+      welcome: "Hola"
+      id: "Identificador del place"
+      comments: "Comentario"
+      owner_id: "Id del propietario"
+      date: "Fecha"
+    list:
+      id: "Identificador del place"
+      comments: "Comentario"
+      owner_id: "Id del propietario"
+      date: "Fecha"
+    map:
+      welcome: "Este es el mapa de tus Places,"

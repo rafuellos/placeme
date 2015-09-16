@@ -1,0 +1,310 @@
+html, body, #map_canvas { 
+  margin-top: 0px;
+  padding: 0; 
+  height: 300px; 
+}
+
+#map_canvas {
+  margin: 5px;
+}
+
+.welcome {
+  color: white;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+
+
+
+.button-link:hover, .button-link:focus {
+  text-decoration: none;
+  outline-style: none;
+}
+
+.disable  {
+  pointer-events: none;
+  cursor: default;
+}
+
+
+.places-images, .places-images-modal {
+  width: 200px;
+  height: 200px;
+  -webkit-backface-visibility: hidden;
+}
+
+.photo-frame {
+  border-radius: 2px;
+  border: 1px solid #F6A25C;
+  margin: 10px 0;
+  width: 250px;
+  height: 250px;
+
+}
+
+
+.show-photo {
+  width: 350px;
+  height: auto;
+  -webkit-backface-visibility: hidden;
+}
+
+.logo-style {
+  width: 13em;
+  height: auto;
+  margin: 15px 0;
+  -webkit-backface-visibility: hidden;
+}
+.places-images-modal {
+  border-radius: 2px;
+}
+
+.search-bar, .search-field  {
+  display: inline-block;
+}
+
+.search-bar {
+  margin-top: 10px;
+}
+
+
+.border-down {
+  border-bottom: 2px solid #009999;
+  border-style: none none solid none;
+  outline: 0 none;
+}
+
+
+div.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container-fluid.menu-for-user.text-center {
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-top: 100px;
+
+}
+
+div.col-xs-2 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.col-xs-12.page-text {
+  padding-bottom: 0;
+}
+
+.color {
+  color: #009999;
+}
+
+.color-secondary {
+  color: #F6A25C;
+}
+
+.color-secondary:hover {
+  color: #FF7400;
+}
+
+.white {
+  color: #FFF;
+  text-align: center;
+}
+
+.action-style {
+    color: white;
+}
+
+.action-style:hover, 
+.action-style:focus {
+    color: #FFF;
+    text-decoration: none;
+    outline-style: none;
+}
+
+.search-gallery{
+  height: 100vh;
+}
+
+.menu-for-user {
+  background-color: #009999;
+  min-height: 550px;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+
+input[type=text],
+select#filterrific_search_query, 
+select#filterrific_with_owner_id, 
+select#filterrific_sorted_by, 
+.text-search {
+  font-size: 15px;
+  color: #009999;
+}
+
+select#filterrific_sorted_by {
+  width: 250px;
+}
+
+.js-datepicker {
+  text-align: center;
+  width: 150px;
+}
+
+.filter-button {
+  margin-top: 10px;
+}
+
+
+
+.modal {
+  display:    none;
+  position:   fixed;
+  z-index:    1000;
+  top:        0;
+  left:       0;
+  height:     100%;
+  width:      100%;
+  background: rgba( 255, 255, 255, .8 ) 
+              url('http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif') 
+              50% 50% 
+              no-repeat;
+}
+
+modal.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+    display: block;
+    z-index: 100;
+}
+
+
+.apple_pagination {
+  font-size: 14px;
+  background: #009999;
+  border: 1px solid #FFF;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: -15px;
+  cursor: default; 
+}
+  .apple_pagination a, .apple_pagination span {
+    padding: 0.2em 0.3em; 
+  }
+  .apple_pagination .disabled {
+    color: #009999; 
+  }
+  .apple_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #009999;
+    background-color: #F6A25C;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+  }
+  .apple_pagination a {
+    text-decoration: none;
+    color: white; 
+  }
+    .apple_pagination a:hover, .apple_pagination a:focus {
+      text-decoration: underline; 
+      color: white;
+    }
+
+.open>.dropdown-menu {
+  margin-left: -55px;
+  min-width: 140px;
+}
+
+.add-modal-header {
+  margin-top: 10px;
+
+}
+
+.add-actions {
+  margin: 10px 0;
+}
+
+input.btn.btn-default.create-place, 
+a.btn.btn-default.create-place.navigate  {
+  background-color: #009999; 
+  color: white;
+}
+input.btn.btn-default.create-place {
+  margin-top: 20px;
+  margin-left: 40px;
+  
+}
+
+.cancel-button {
+  margin-top: 10px;
+}
+
+.place-text-area {
+  height: 100px;
+  overflow: hidden;
+  resize: none;
+}
+
+.data-location-place {
+  display: inline-flex;
+}
+.place-address {
+  height: 29px;
+  width: 300px;
+  color: #009999;
+  font-size: 15px;
+}
+
+.coord-place {
+  width: 125px;
+  text-align: center;
+  font-size: 15px;
+
+}
+
+.im-centered { 
+  margin: auto; 
+  max-width: 800px;
+}
+
+button#set_location {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.col.col-xs-12.text-center.data-location-place {
+  margin-top: 25px;
+}
+
+.col.col-xs-3.field {
+  margin-top: 55px;
+}
+
+.details {
+  margin-bottom: 20px;
+}
+
+.buttons-menu-for-user {
+  margin: 15px 0;
+}
+
+.data-line {
+  margin: 20px 0;
+  padding-bottom: 10px;
+}
+
+.links-line {
+  margin-top: 20px;
+
+}

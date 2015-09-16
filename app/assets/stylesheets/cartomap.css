@@ -1,0 +1,12 @@
+.map-cartodb {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+
+}
+
+.menu-map-carto {
+  position: relative;
+  width: 15vw;
+  top: 60px;
+}

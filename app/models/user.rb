@@ -4,8 +4,20 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def new
-    
-    
+  has_many :owned_places, class_name: 'Place', foreign_key: :owner_id
+  has_and_belongs_to_many :shared_places, class_name: 'Place', :join_table => "places_users", :association_foreign_key => "shared_place_id", foreign_key: "shared_user_id"
+
+  validates :email, presence: true
+  validates :locale_value, presence: true
+
+  def all_places
+      (self.owned_places + self.shared_places).uniq
   end
+
+
+  def self.options_for_select
+      order('LOWER(name)').map { |user| [user.name, user.id] }
+  end
+
+
 end

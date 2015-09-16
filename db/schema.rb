@@ -11,15 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817085139) do
+ActiveRecord::Schema.define(version: 20150826192105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "places", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "owner_id"
+    t.text     "comments"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "title"
+    t.float    "longitude",          default: 0.0
+    t.float    "latitude",           default: 0.0
+    t.text     "address"
   end
+
+  create_table "places_users", id: false, force: :cascade do |t|
+    t.integer "shared_place_id"
+    t.integer "shared_user_id"
+  end
+
+  add_index "places_users", ["shared_place_id"], name: "index_places_users_on_shared_place_id", using: :btree
+  add_index "places_users", ["shared_user_id"], name: "index_places_users_on_shared_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150817085139) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "locale_value"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

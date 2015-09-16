@@ -1,26 +1,63 @@
-<h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container-fluid">
+  <div class="row sign-in-page nav-bar">
+    <div class="col col-xs-4 text-center logo-at-sign-in">
+      <%= image_tag("logoPlaceMe.png", :alt => "rss feed", class: 'logo-style logo-sign-in') %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="col col-xs-4 button-sign-in">
+      <button href="#" id="overlaylaunch-signIn" class="btn btn-default"><i class="fa fa-sign-in fa-2x color"> <p class="sign-in-text">Sign In</p></i></button>
+    </div>
   </div>
-<% end %>
+</div>  
 
-<%= render "devise/shared/links" %>
+
+<div class="row">
+  <div id="overlay-signIn" class="overlay">
+    <div class="toolbar"><a class="close" href="#"><i class="fa fa-times-circle fa-2x"></i></a></div>
+    <div class="wrapper">
+      <div class="col col-xs-4 col-xs-offset-4 text-center boston-text">
+          Welcome to Place!Me
+      </div> 
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="col col-xs-10 col-xs-offset-1 text-center">
+          <div class="sign-in-form">
+            <div class="form-items">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, class: "color" %>
+            </div>
+            <div class="form-items">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off", class: "color" %>
+            </div>
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-items">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>   
+            <% end -%>
+          </div>
+        </div>
+        <div class="col col-xs-10 col-xs-offset-1 text-center">
+          <div class="sign-in-form">
+            
+            <br>
+            <div class="form-items">
+              <%= button_tag(type: "submit", class: "btn btn-default create-places") do %>
+                <i class="fa fa-sign-in"> Sign In</i>
+              <% end %>
+            </div>
+            <div class="color-secondary"><%= render "devise/shared/links" %></div>
+          </div> 
+        </div>       
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
