@@ -2,6 +2,16 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
 
+platforms :ruby do # linux
+
+gem 'unicorn'
+
+end
+
+platforms :mswin do # gems specific to windows
+
+end
+
 gem 'leaflet-rails'
 
 gem "paperclip", "~> 4.3"
@@ -16,7 +26,9 @@ gem 'bundler', '>= 1.8.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
-gem 'pg'
+group :development, :production do 
+  gem 'pg' 
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
