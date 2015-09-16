@@ -4,10 +4,6 @@ gem 'pundit'
 
 gem 'leaflet-rails'
 
-gem 'ruby', '~> 2.0.0'
-
-
-
 gem "paperclip", "~> 4.3"
 
 gem 'globalize', '~> 5.0.0'
