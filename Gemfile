@@ -4,6 +4,7 @@ gem 'pundit'
 
 gem 'leaflet-rails'
 
+gem 'ruby', '~> 2.0.0'
 
 
 
