@@ -28,7 +28,7 @@ class PlacePolicy < ApplicationPolicy
 
   def permitted_attributes
     if (user.id == record.owner_id)
-      [:comments, :photo]
+      [:title, :comments, :photo]
     end
   end
 
