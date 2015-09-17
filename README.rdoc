@@ -1,28 +1,7 @@
-== README
+== PLACEME!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PlaceMe! is an app that helps you store your favourite locations adding a title, a comment, and specially a picture that reminds you of your experience in that special place.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is based in Rails. I have also used JS for some frontend interactions, and for communication with Google and CartoDB APIs.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
