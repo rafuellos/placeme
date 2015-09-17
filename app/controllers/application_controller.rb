@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     if current_user
       if current_user.locale_value && I18n.available_locales.include?(cookies[:placeme_locale].to_sym)
-        binding.remote-pry
-        language = current_user.locale_value.to_sym
+        language = I18n.default_locale #current_user.locale_value.to_sym
       else
         language = I18n.default_locale
         current_user.locale_value = language
