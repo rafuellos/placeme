@@ -1,5 +1,5 @@
   
-class PlacePolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
 
   def update?
     user.id == record.id
