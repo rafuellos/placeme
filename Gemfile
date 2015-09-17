@@ -2,6 +2,7 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem 'pundit'
+gem 'pry-remote'
 
 platforms :ruby do # linux
 
